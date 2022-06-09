@@ -5,6 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      maxWidth: {
+        sm: '600px',
+      },
       colors: {
         primary: 'rgba(17, 17, 17, 0.757)',
         success: '#0c9361',
@@ -23,6 +26,7 @@ module.exports = {
       },
       screens: {
         sm: '601px',
+        md: '701px',
       },
     },
   },

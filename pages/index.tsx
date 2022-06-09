@@ -5,18 +5,20 @@ import Head from "next/head";
 import AllCoinsContextProvider from "../context/AllCoinsContextProvider";
 import Navbar from "../components/HomePage/Navbar";
 import Table from "../components/HomePage/CoinsTable";
+import ScrollTopButton from "../components/UI/ScrollTopButton";
 
 const HomePage: NextPage = () => {
   return (
     <>
       <Head>
-        <title>HomePage</title>
+        <title>SpotMarkets</title>
       </Head>
-      <div className='container'>
+      <div className='container max-w-sm mx-auto'>
         <AllCoinsContextProvider>
           <Navbar />
           <Table />
         </AllCoinsContextProvider>
+        <ScrollTopButton />
       </div>
     </>
   );

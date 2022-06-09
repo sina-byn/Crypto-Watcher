@@ -30,7 +30,7 @@ const CoinCard: FC<CoinCardProps> = (props) => {
         className={`card-design h-full w-1/2 absolute bg-gradient-to-l from-${cardTheme}`}
       ></div>
       <div className='card-data flex justify-between items-center gap-x-2 w-full h-full absolute bg-primary backdrop-blur-xl p-4'>
-        <figure className='grid place-items-center w-14 aspect-square rounded-full'>
+        <figure className='grid place-items-center w-14 h-14 rounded-full'>
           <img src={img} alt={name + "sign"} className='w-10' />
         </figure>
         <div className='flex flex-col flex-grow gap-y-1'>

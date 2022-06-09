@@ -6,7 +6,7 @@
 @font-face {
   font-family: "latolight";
   src: url("/lato-font/lato-light-webfont.woff2") format("woff2"),
-  url("/lato-font/lato-light-webfont.woff") format("woff");
+    url("/lato-font/lato-light-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
@@ -14,7 +14,7 @@
 @font-face {
   font-family: "latoregular";
   src: url("/lato-font/lato-regular-webfont.woff2") format("woff2"),
-  url("/lato-font/lato-regular-webfont.woff") format("woff");
+    url("/lato-font/lato-regular-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }

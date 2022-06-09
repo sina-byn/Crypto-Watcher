@@ -15,15 +15,15 @@ const Navbar: FC = () => {
       <div className='slider-design w-36 absolute right-0 h-full z-10 bg-gradient-to-l from-black to-transparent'></div>
       <div className='slider-design w-36 absolute left-0 h-full z-10 bg-gradient-to-r from-black to-transparent'></div>
       <Swiper
-        className='w-[100%] mx-auto'
+        className='w-[100%] mx-auto cursor-pointer'
         slidesPerView={2.5}
         centeredSlides={true}
       >
         <SwiperSlide className='text-center'>
-          <NavLink id={1} text='Watchlist' href='/' />
+          <NavLink id={1} text='Spot Markets' href='/' />
         </SwiperSlide>
         <SwiperSlide className='text-center'>
-          <NavLink id={2} text='Spot Markets' href='/' />
+          <NavLink id={2} text='Watchlist' href='/' />
         </SwiperSlide>
       </Swiper>
       <div className='indicator w-1 h-1 bg-gray-200 rounded-full mx-auto mt-2'></div>
