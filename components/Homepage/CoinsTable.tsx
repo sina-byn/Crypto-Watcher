@@ -20,7 +20,7 @@ const Table: FC = () => {
   }
 
   return (
-    <section className='flex flex-col gap-y-3 bg-black px-6'>
+    <section className='flex flex-col gap-y-3 px-6'>
       {data?.map((coin) => {
         return (
           <CoinCard

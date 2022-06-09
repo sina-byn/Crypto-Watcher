@@ -41,3 +41,8 @@
   box-sizing: border-box;
   font-family: inherit;
 }
+
+body {
+  background: #000;
+  scroll-behavior: smooth;
+}

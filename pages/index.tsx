@@ -2,7 +2,8 @@ import { NextPage } from "next";
 import Head from "next/head";
 
 // Importing Components
-import Table from "../components/Homepage/CoinsTable";
+import Navbar from "../components/HomePage/Navbar";
+import Table from "../components/HomePage/CoinsTable";
 
 const HomePage: NextPage = () => {
   return (
@@ -10,7 +11,8 @@ const HomePage: NextPage = () => {
     <Head>
       <title>HomePage</title>
     </Head>
-    <div>
+    <div className="container">
+      <Navbar />
       <Table />
     </div>
     </>

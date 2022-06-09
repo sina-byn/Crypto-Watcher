@@ -18,6 +18,12 @@ module.exports = {
       fontSize: {
         md: '16px',
       },
+      opacity: {
+        '90': ".9",
+      },
+      screens: {
+        sm: '601px',
+      },
     },
   },
   plugins: [],

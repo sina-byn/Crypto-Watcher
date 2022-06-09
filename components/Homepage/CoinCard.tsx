@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 
 // Importing Interfaces
 import { CoinCardProps } from "../../interfaces/interfaces";
@@ -7,24 +7,27 @@ const CoinCard: FC<CoinCardProps> = (props) => {
   const { name, symbol, total_volume, price_change, current_price, img } =
     props;
 
-  const setColor = (price_change: number | null, property: string): string => {
-    if (price_change) {
-      if (price_change > 0) {
-        return `${property}-success`;
-      } else if (price_change < 0) {
-        return `${property}-error`;
+  const [cardTheme, setCardTheme] = useState<string>();
+
+  useEffect(() => {
+    const setColor = (price_change: number | null): string => {
+      if (price_change) {
+        if (price_change > 0) {
+          return "success";
+        } else if (price_change < 0) {
+          return "error";
+        }
       }
-    }
-    return `${property}-gray-500`;
-  };
+      return "gray-500";
+    };
+
+    setCardTheme(setColor(price_change));
+  }, [cardTheme]);
 
   return (
     <div className='card flex justify-end w-full h-20 relative overflow-hidden'>
       <div
-        className={`card-design h-full w-1/2 absolute bg-gradient-to-l ${setColor(
-          price_change,
-          "from"
-        )}`}
+        className={`card-design h-full w-1/2 absolute bg-gradient-to-l from-${cardTheme}`}
       ></div>
       <div className='card-data flex justify-between items-center gap-x-2 w-full h-full absolute bg-primary backdrop-blur-xl p-4'>
         <figure className='grid place-items-center w-14 aspect-square rounded-full'>
@@ -40,7 +43,7 @@ const CoinCard: FC<CoinCardProps> = (props) => {
           </p>
         </div>
         <div className='flex flex-col text-md items-end gap-y-1'>
-          <p className={setColor(price_change, "text")}>
+          <p className={`text-${cardTheme}`}>
             {price_change?.toLocaleString()}
           </p>
           <p className='text-xs text-gray-500'>
