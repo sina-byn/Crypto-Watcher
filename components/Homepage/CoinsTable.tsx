@@ -3,6 +3,9 @@ import { FC } from "react";
 // Importing Custom hooks
 import useCoinsData from "../../hooks/useCoinsData";
 
+// Importing Components
+import CoinCard from "./CoinCard";
+
 const Table: FC = () => {
   const apiAddress: string =
     "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false";
@@ -17,11 +20,21 @@ const Table: FC = () => {
   }
 
   return (
-    <div>
+    <section className='flex flex-col gap-y-3 bg-black px-6'>
       {data?.map((coin) => {
-        return <p key={coin.id}>{coin.name}</p>;
+        return (
+          <CoinCard
+            key={coin.id}
+            name={coin.name}
+            symbol={coin.symbol}
+            total_volume={coin.total_volume}
+            price_change={coin.price_change_percentage_24h}
+            current_price={coin.current_price}
+            img={coin.image}
+          />
+        );
       })}
-    </div>
+    </section>
   );
 };
 

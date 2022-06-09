@@ -2,7 +2,7 @@ import { NextPage } from "next";
 import Head from "next/head";
 
 // Importing Components
-import Table from "../components/Homepage/Table";
+import Table from "../components/Homepage/CoinsTable";
 
 const HomePage: NextPage = () => {
   return (
