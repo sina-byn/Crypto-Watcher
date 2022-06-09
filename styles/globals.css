@@ -1,16 +1,43 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Font Faces */
+@font-face {
+  font-family: "latolight";
+  src: url("/lato-font/lato-light-webfont.woff2") format("woff2"),
+  url("/lato-font/lato-light-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+@font-face {
+  font-family: "latoregular";
+  src: url("/lato-font/lato-regular-webfont.woff2") format("woff2"),
+  url("/lato-font/lato-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
 
+@font-face {
+  font-family: "latobold";
+  src: url("/lato-font/lato-bold-webfont.woff2") format("woff2"),
+    url("/lato-font/lato-bold-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Custom Properties */
+:root {
+  --ff-light: "latolight";
+  --ff-regular: "latoregular";
+  --ff-bold: "latobold";
+}
+
+/* CSS Reset */
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
+  font-family: inherit;
 }
