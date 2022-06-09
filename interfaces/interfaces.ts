@@ -25,7 +25,7 @@ export interface CoinDataProps {
   symbol: string | undefined | null;
   total_supply: number | undefined | null;
   total_volume: number | undefined | null;
-};
+}
 
 export interface CoinCardProps {
   name: string | undefined | null;
@@ -34,15 +34,19 @@ export interface CoinCardProps {
   current_price: number | undefined | null;
   total_volume: number | undefined | null;
   img: string | undefined;
-};
+}
+
+export interface AllCoinsCtx {
+  data: CoinDataProps[] | undefined;
+  error: any;
+}
 
 export interface NavLinkProps {
   id: number;
   text: string;
   href: string;
   classes?: string;
-};
-
+}
 // ath: 69045
 // ath_change_percentage: -55.7648
 // ath_date: "2021-11-10T14:24:11.849Z"
