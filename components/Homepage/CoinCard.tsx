@@ -26,6 +26,7 @@ const CoinCard: FC<CoinProps> = (props) => {
     img,
   } = props;
   const ctx: AppCtx | null = useContext<AppCtx | null>(AppContext);
+  const selectMode = ctx?.selectMode;
 
   const clickHandler = (): void => {
     if (ctx) {
@@ -101,7 +102,7 @@ const CoinCard: FC<CoinProps> = (props) => {
               ${current_price?.toLocaleString()}
             </p>
           </div>
-          <Checkbox id={id} />
+          {selectMode ? <Checkbox id={id} /> : ""}
         </div>
       </div>
     );

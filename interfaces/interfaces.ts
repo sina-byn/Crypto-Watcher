@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, ReactNode, SetStateAction } from "react";
 
 export interface CoinDataProps {
   ath: number | undefined | null;
@@ -50,10 +50,17 @@ export interface ApiAddress {
 export interface AppCtx {
   watchlist: string[];
   setWatchlist: Dispatch<SetStateAction<string[]>>;
+  selectMode: boolean;
+  setSelectMode: Dispatch<SetStateAction<boolean>>;
   isModalShown: boolean;
   setIsModalShown: Dispatch<SetStateAction<boolean>>;
   modalInfo: CoinProps | undefined;
   setModalInfo: Dispatch<SetStateAction<CoinProps>>;
+}
+
+export interface HeaderProps {
+  initialSlide: number;
+  children?: ReactNode;
 }
 
 // ath: 69045

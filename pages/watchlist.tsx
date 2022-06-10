@@ -7,7 +7,7 @@ import useCoinsData from "../hooks/useCoinsData";
 
 // Importing Components
 import AppContextProvider from "../context/AppContextProvider";
-import Navbar from "../components/HomePage/Navbar";
+import Header from "../components/Header";
 import CoinsTable from "../components/HomePage/CoinsTable";
 import ScrollTopButton from "../components/UI/ScrollTopButton";
 import CoinModal from "../components/HomePage/CoinModal";
@@ -35,7 +35,7 @@ const WatchlistPage: NextPage = () => {
       </Head>
       <div className='container max-w-sm min-h-screen relative mx-auto text-white'>
         <AppContextProvider>
-          <Navbar initialSlide={1} />
+          <Header initialSlide={1} />
           <CoinsTable coins={data} error={error} />
           <CoinModal />
           <ScrollTopButton />

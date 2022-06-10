@@ -11,7 +11,7 @@ export const AppContext = createContext<AppCtx | null>(null);
 
 const AppContextProvider: FC<Props> = ({ children }) => {
   const [watchlist, setWatchlist] = useState<string[]>(['bitcoin', 'ethereum', 'tether', 'solana']);
-  // const [selectMode, setSelectMode] = useState<boolean>(false);
+  const [selectMode, setSelectMode] = useState<boolean>(false);
   const [isModalShown, setIsModalShown] = useState<boolean>(false);
   const [modalInfo, setModalInfo] = useState<CoinProps>({
     id: "",
@@ -26,6 +26,8 @@ const AppContextProvider: FC<Props> = ({ children }) => {
   const ctxData: AppCtx = {
     watchlist,
     setWatchlist,
+    selectMode,
+    setSelectMode,
     isModalShown,
     setIsModalShown,
     modalInfo,

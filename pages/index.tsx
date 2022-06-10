@@ -4,7 +4,8 @@ import { useState } from "react";
 
 // Importing Components
 import AppContextProvider from "../context/AppContextProvider";
-import Navbar from "../components/HomePage/Navbar";
+import Header from "../components/Header";
+import WatchlistButton from "../components/UI/WatchlistButton";
 import Table from "../components/HomePage/CoinsTable";
 import CoinModal from "../components/HomePage/CoinModal";
 import ScrollTopButton from "../components/UI/ScrollTopButton";
@@ -25,7 +26,9 @@ const SpotMarketsPage: NextPage = () => {
       </Head>
       <div className='container max-w-sm min-h-screen relative mx-auto'>
         <AppContextProvider>
-          <Navbar initialSlide={0} />
+          <Header initialSlide={0}>
+            <WatchlistButton />
+          </Header>
           <Table coins={data} error={error} />
           <CoinModal />
           <ScrollTopButton />
