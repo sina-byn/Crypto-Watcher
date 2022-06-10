@@ -19,10 +19,10 @@ const Navbar: FC = () => {
         slidesPerView={2.5}
         centeredSlides={true}
       >
-        <SwiperSlide className='text-center'>
+        <SwiperSlide className='text-center select-none'>
           <NavLink id={1} text='Spot Markets' href='/' />
         </SwiperSlide>
-        <SwiperSlide className='text-center'>
+        <SwiperSlide className='text-center select-none'>
           <NavLink id={2} text='Watchlist' href='/' />
         </SwiperSlide>
       </Swiper>

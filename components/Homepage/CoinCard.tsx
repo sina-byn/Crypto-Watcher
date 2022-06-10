@@ -1,4 +1,8 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useContext, useEffect, useState } from "react";
+
+// Importing Context + Interfaces
+import { AppContext } from "../../context/AppContextProvider";
+import { AppCtx } from "../../interfaces/interfaces";
 
 // Importing Interfaces
 import { CoinCardProps } from "../../interfaces/interfaces";
@@ -6,10 +10,11 @@ import { CoinCardProps } from "../../interfaces/interfaces";
 const CoinCard: FC<CoinCardProps> = (props) => {
   const { name, symbol, total_volume, price_change, current_price, img } =
     props;
-
   const [cardTheme, setCardTheme] = useState<string>();
+  const ctx: AppCtx | null = useContext<AppCtx | null>(AppContext);
 
   useEffect(() => {
+    console.log("sina");
     const setColor = (price_change: number | null): string => {
       if (price_change) {
         if (price_change > 0) {
@@ -24,8 +29,28 @@ const CoinCard: FC<CoinCardProps> = (props) => {
     setCardTheme(setColor(price_change));
   }, [cardTheme]);
 
+  const clickHandler = (): void => {
+    if (ctx) {
+      const { setIsModalShown, setModalInfo, setIsScrollable } = ctx;
+      setIsScrollable(false);
+      setIsModalShown(true);
+      setModalInfo({
+        name: name,
+        symbol: symbol,
+        current_price: current_price,
+        rank: "TOP #3",
+        explanation:
+          "Launched in May 2003, Binance is the biggest cryptocurrency exchange globally based on daily",
+        img: img,
+      });
+    }
+  };
+
   return (
-    <div className='card flex justify-end w-full h-20 relative overflow-hidden'>
+    <div
+      className='card flex justify-end w-full h-20 relative overflow-hidden'
+      onClick={clickHandler}
+    >
       <div
         className={`card-design h-full w-1/2 absolute bg-gradient-to-l from-${cardTheme}`}
       ></div>
@@ -45,6 +70,7 @@ const CoinCard: FC<CoinCardProps> = (props) => {
         <div className='flex flex-col text-md items-end gap-y-1'>
           <p className={`text-${cardTheme}`}>
             {price_change?.toLocaleString()}
+            <span className='text-xs'>%</span>
           </p>
           <p className='text-xs text-gray-500'>
             ${current_price?.toLocaleString()}

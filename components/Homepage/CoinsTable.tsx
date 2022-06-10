@@ -1,14 +1,14 @@
 import { FC, useContext } from "react";
 
 // Importing Context + Interfaces
-import { AllCoinsContext } from "../../context/AllCoinsContextProvider";
-import { AllCoinsCtx } from "../../interfaces/interfaces";
+import { AppContext } from "../../context/AppContextProvider";
+import { AppCtx } from "../../interfaces/interfaces";
 
 // Importing Components
 import CoinCard from "./CoinCard";
 
 const Table: FC = () => {
-  const ctx = useContext<AllCoinsCtx | null>(AllCoinsContext);
+  const ctx = useContext<AppCtx | null>(AppContext);
   const data = ctx?.data;
   const error = ctx?.error;
 
@@ -21,7 +21,7 @@ const Table: FC = () => {
   }
 
   return (
-    <section className='flex flex-col gap-y-3 px-6'>
+    <section className='flex flex-col gap-y-3 min-h-screen px-6 pb-10'>
       {data?.map((coin) => {
         return (
           <CoinCard

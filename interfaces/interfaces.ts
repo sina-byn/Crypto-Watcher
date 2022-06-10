@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from "react";
+
 export interface CoinDataProps {
   ath: number | undefined | null;
   ath_change_percentage: number | undefined | null;
@@ -36,17 +38,37 @@ export interface CoinCardProps {
   img: string | undefined;
 }
 
-export interface AllCoinsCtx {
+export interface AppCtx {
   data: CoinDataProps[] | undefined;
   error: any;
+  setApiPage: Dispatch<SetStateAction<number>>;
+  isScrollable: boolean;
+  setIsScrollable: Dispatch<SetStateAction<boolean>>;
+  isModalShown: boolean;
+  setIsModalShown: Dispatch<SetStateAction<boolean>>;
+  modalInfo: ModalInfoProps | undefined;
+  setModalInfo: Dispatch<SetStateAction<ModalInfoProps>>;
+}
+
+export interface ModalInfoProps {
+  name: string | undefined | null;
+  symbol: string | undefined | null;
+  current_price: number | undefined | null;
+  rank: string;
+  explanation: string;
+  img: string | undefined;
 }
 
 export interface NavLinkProps {
   id: number;
   text: string;
   href: string;
-  classes?: string;
 }
+
+export interface PaginationButtonProps {
+  id: number;
+}
+
 // ath: 69045
 // ath_change_percentage: -55.7648
 // ath_date: "2021-11-10T14:24:11.849Z"

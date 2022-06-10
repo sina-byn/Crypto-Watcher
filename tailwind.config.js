@@ -5,13 +5,21 @@ module.exports = {
   ],
   theme: {
     extend: {
+      minWidth: {
+        xs: '320px',
+      },
       maxWidth: {
         sm: '600px',
+        xs: '320px',
       },
       colors: {
         primary: 'rgba(17, 17, 17, 0.757)',
+        'primary-light': '#19171e',
+        'primary-dark': '#010101',
         success: '#0c9361',
         error: '#d33c4f',
+        'stop-1': '#e05c3b',
+        'stop-2': '#b641ba',
       },
       fontFamily: {
         'lato-light': ["latolight", "sans-serif"],
@@ -25,8 +33,8 @@ module.exports = {
         '90': ".9",
       },
       screens: {
-        sm: '601px',
-        md: '701px',
+        sm: '550px',
+        md: '716px',
       },
     },
   },
