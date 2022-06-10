@@ -1,15 +1,14 @@
 import useSWR, { Fetcher } from "swr";
 
 // Importing Interfaces
-import { AppCtx, CoinDataProps } from "../interfaces/interfaces";
+import { CoinDataProps, ApiAddress } from "../interfaces/interfaces";
 
-// options object has to be type explicitly while setting the configuration
-const useCoinsData = (apiAdd: string, options?: any) => {
-  const apiAddress: string = apiAdd;
-  const fetcher: Fetcher<CoinDataProps[], string> = (...args) =>
-    fetch(...args).then((res) => res.json());
+const useCoinsData = (apiAddress: ApiAddress | string) => {
+  const fetcher: Fetcher<CoinDataProps[], string> = (url) =>
+    fetch(url).then((res) => res.json());
 
-  const { data, error } = useSWR(apiAddress, fetcher, options);
+  const { data, error } = useSWR(apiAddress, fetcher);
+
   return { data, error };
 };
 

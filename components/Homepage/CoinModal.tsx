@@ -10,11 +10,10 @@ import { moveInOut } from "../../helpers/animations";
 const CoinModal: FC = () => {
   const ctx: AppCtx | null = useContext<AppCtx | null>(AppContext);
   if (ctx) {
-    const { isModalShown, setIsModalShown, modalInfo, setIsScrollable } = ctx;
+    const { isModalShown, setIsModalShown, modalInfo } = ctx;
 
     const closeHandler = (): void => {
       moveInOut(".modal");
-      setIsScrollable(true);
       setTimeout(() => {
         setIsModalShown(false);
       }, 200);

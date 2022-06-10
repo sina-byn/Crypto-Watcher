@@ -1,4 +1,4 @@
-import { FC, useContext, useEffect } from "react";
+import { FC, useContext } from "react";
 
 // Importing Context + Interfaces
 import { AppContext } from "../../context/AppContextProvider";
@@ -10,8 +10,12 @@ import { CoinProps } from "../../interfaces/interfaces";
 // Importing Functions
 import { moveInOut } from "../../helpers/animations";
 
+// Importing Components
+import Checkbox from "../UI/Checkbox";
+
 const CoinCard: FC<CoinProps> = (props) => {
   const {
+    id,
     name,
     symbol,
     current_price,
@@ -25,11 +29,11 @@ const CoinCard: FC<CoinProps> = (props) => {
 
   const clickHandler = (): void => {
     if (ctx) {
-      const { setIsModalShown, setModalInfo, setIsScrollable } = ctx;
+      const { setIsModalShown, setModalInfo } = ctx;
       moveInOut(".modal");
-      setIsScrollable(false);
       setIsModalShown(true);
       setModalInfo({
+        id: id,
         name: name,
         symbol: symbol,
         current_price: current_price,
@@ -69,7 +73,7 @@ const CoinCard: FC<CoinProps> = (props) => {
   if (price_change !== undefined && price_change !== null) {
     return (
       <div
-        className='card flex justify-end w-full h-20 relative overflow-hidden'
+        className='card flex justify-end w-full h-20 relative overflow-hidden cursor-pointer'
         onClick={clickHandler}
       >
         <div
@@ -97,6 +101,7 @@ const CoinCard: FC<CoinProps> = (props) => {
               ${current_price?.toLocaleString()}
             </p>
           </div>
+          <Checkbox id={id} />
         </div>
       </div>
     );

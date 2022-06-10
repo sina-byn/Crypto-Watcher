@@ -1,19 +1,14 @@
-import { FC, useContext } from "react";
+import { Dispatch, FC, SetStateAction } from "react";
 
-// Importing Context + Interfaces
-import { AppContext } from "../../context/AppContextProvider";
-import { AppCtx } from "../../interfaces/interfaces";
+interface Props {
+  id: number;
+  setApiPageNo: Dispatch<SetStateAction<number | undefined>>;
+}
 
-// Importing Interfaces
-import { PaginationButtonProps } from "../../interfaces/interfaces";
+const PaginationButton: FC<Props> = ({ id, setApiPageNo }) => {
 
-const PaginationButton: FC<PaginationButtonProps> = ({ id }) => {
-  const ctx = useContext<AppCtx | null>(AppContext);
-
-  const clickHandler = () => {
-    if (ctx && ctx.setApiPage) {
-      ctx.setApiPage(id);
-    }
+  const clickHandler = (): void => {
+    if (setApiPageNo) setApiPageNo(id);
   };
 
   return (

@@ -30,6 +30,7 @@ export interface CoinDataProps {
 }
 
 export interface CoinProps {
+  id: string | undefined | null;
   name: string | undefined | null;
   symbol: string | undefined | null;
   current_price: number | undefined | null;
@@ -41,35 +42,18 @@ export interface CoinProps {
   img: string | undefined;
 }
 
+export interface ApiAddress {
+  url: string;
+  ids?: string;
+}
+
 export interface AppCtx {
-  data: CoinDataProps[] | undefined;
-  error: any;
-  setApiPage: Dispatch<SetStateAction<number>>;
-  isScrollable: boolean;
-  setIsScrollable: Dispatch<SetStateAction<boolean>>;
+  watchlist: string[];
+  setWatchlist: Dispatch<SetStateAction<string[]>>;
   isModalShown: boolean;
   setIsModalShown: Dispatch<SetStateAction<boolean>>;
   modalInfo: CoinProps | undefined;
   setModalInfo: Dispatch<SetStateAction<CoinProps>>;
-}
-
-// export interface ModalInfoProps {
-//   name: string | undefined | null;
-//   symbol: string | undefined | null;
-//   current_price: number | undefined | null;
-//   rank: string;
-//   explanation: string;
-//   img: string | undefined;
-// }
-
-export interface NavLinkProps {
-  id: number;
-  text: string;
-  href: string;
-}
-
-export interface PaginationButtonProps {
-  id: number;
 }
 
 // ath: 69045

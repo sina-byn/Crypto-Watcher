@@ -1,5 +1,4 @@
-import { FC, createContext, ReactNode, useState, useEffect } from "react";
-import useCoinsData from "../hooks/useCoinsData";
+import { FC, createContext, ReactNode, useState } from "react";
 
 // Importing Interfaces
 import { AppCtx, CoinProps } from "../interfaces/interfaces";
@@ -11,10 +10,11 @@ interface Props {
 export const AppContext = createContext<AppCtx | null>(null);
 
 const AppContextProvider: FC<Props> = ({ children }) => {
-  const [apiPage, setApiPage] = useState<number>(1);
-  const [isScrollable, setIsScrollable] = useState<boolean>(true);
+  const [watchlist, setWatchlist] = useState<string[]>(['bitcoin', 'ethereum', 'tether', 'solana']);
+  // const [selectMode, setSelectMode] = useState<boolean>(false);
   const [isModalShown, setIsModalShown] = useState<boolean>(false);
   const [modalInfo, setModalInfo] = useState<CoinProps>({
+    id: "",
     name: "",
     symbol: "",
     current_price: 0,
@@ -22,17 +22,10 @@ const AppContextProvider: FC<Props> = ({ children }) => {
     explanation: "---",
     img: "/",
   });
-  
-  const apiAddress: string =
-  `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=${apiPage}&sparkline=false`;
-  const { data, error } = useCoinsData(apiAddress);
-  
+
   const ctxData: AppCtx = {
-    data,
-    error,
-    setApiPage,
-    isScrollable,
-    setIsScrollable,
+    watchlist,
+    setWatchlist,
     isModalShown,
     setIsModalShown,
     modalInfo,
