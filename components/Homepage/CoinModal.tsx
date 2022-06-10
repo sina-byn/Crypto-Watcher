@@ -4,14 +4,20 @@ import { FC, useContext } from "react";
 import { AppContext } from "../../context/AppContextProvider";
 import { AppCtx } from "../../interfaces/interfaces";
 
+// Importing Functions
+import { moveInOut } from "../../helpers/animations";
+
 const CoinModal: FC = () => {
   const ctx: AppCtx | null = useContext<AppCtx | null>(AppContext);
   if (ctx) {
     const { isModalShown, setIsModalShown, modalInfo, setIsScrollable } = ctx;
 
     const closeHandler = (): void => {
-      setIsModalShown(false);
+      moveInOut('.modal');
       setIsScrollable(true);
+      setTimeout(() => {
+        setIsModalShown(false);
+      }, 200);
     };
 
     if (modalInfo) {
@@ -21,7 +27,7 @@ const CoinModal: FC = () => {
         <section
           className={`${
             isModalShown ? "flex" : "hidden"
-          } items-end w-full max-w-sm h-screen fixed top-0 z-10 text-gray-200`}
+          } modal items-end w-full max-w-sm h-screen fixed top-0 z-10 text-gray-200 translate-y-full transition-transform duration-300`}
         >
           <div
             className='backdrop h-full w-full absolute -z-10'

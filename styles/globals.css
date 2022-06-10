@@ -47,3 +47,11 @@ body {
   background: #000;
   scroll-behavior: smooth;
 }
+
+/* TS Animation Classes */
+.move-in {
+  -moz-transform: translateY(0) !important;
+  -ms-transform: translateY(0) !important;
+  -o-transform: translateY(0) !important;
+  transform: translateY(0) !important;
+}

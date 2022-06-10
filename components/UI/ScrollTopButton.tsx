@@ -17,7 +17,7 @@ const ScrollTopButton: FC = () => {
       type='button'
       className={`${
         isScrollable ? "initial" : "hidden"
-      } w-8 h-8 bg-gray-200 sticky bottom-10 rounded-full px-2 ml-10 md:-ml-12`}
+      } w-8 h-8 sticky bottom-10 bg-gray-100 rounded-full px-2 ml-10 md:-ml-12`}
       onClick={clickHandler}
     >
       <img src='/icons/chevron-up.svg' alt='Chevron Top Icon' />

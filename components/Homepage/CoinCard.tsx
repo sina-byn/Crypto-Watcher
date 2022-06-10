@@ -2,6 +2,7 @@ import { FC, useContext, useEffect, useState } from "react";
 
 // Importing Context + Interfaces
 import { AppContext } from "../../context/AppContextProvider";
+import { moveInOut } from "../../helpers/animations";
 import { AppCtx } from "../../interfaces/interfaces";
 
 // Importing Interfaces
@@ -14,7 +15,6 @@ const CoinCard: FC<CoinCardProps> = (props) => {
   const ctx: AppCtx | null = useContext<AppCtx | null>(AppContext);
 
   useEffect(() => {
-    console.log("sina");
     const setColor = (price_change: number | null): string => {
       if (price_change) {
         if (price_change > 0) {
@@ -32,6 +32,7 @@ const CoinCard: FC<CoinCardProps> = (props) => {
   const clickHandler = (): void => {
     if (ctx) {
       const { setIsModalShown, setModalInfo, setIsScrollable } = ctx;
+      moveInOut('.modal');
       setIsScrollable(false);
       setIsModalShown(true);
       setModalInfo({
