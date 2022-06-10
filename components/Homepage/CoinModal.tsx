@@ -13,7 +13,7 @@ const CoinModal: FC = () => {
     const { isModalShown, setIsModalShown, modalInfo, setIsScrollable } = ctx;
 
     const closeHandler = (): void => {
-      moveInOut('.modal');
+      moveInOut(".modal");
       setIsScrollable(true);
       setTimeout(() => {
         setIsModalShown(false);
@@ -21,7 +21,15 @@ const CoinModal: FC = () => {
     };
 
     if (modalInfo) {
-      const { name, symbol, current_price, rank, explanation, img } = modalInfo;
+      const {
+        name,
+        symbol,
+        current_price,
+        market_cap,
+        rank,
+        explanation,
+        img,
+      } = modalInfo;
 
       return (
         <section
@@ -45,21 +53,28 @@ const CoinModal: FC = () => {
               <p className='w-10/12 max-w-xs text-center text-xs mx-auto mb-8'>
                 {explanation}...
               </p>
-              <div className='flex justify-between w-6/12 min-w-xs'>
-                <div className='flex flex-col items-center'>
+              <div className='flex justify-between items-center w-full min-w-xs max-w-sm'>
+                <div className='flex flex-col w-full items-center'>
                   <p className='text-xs font-light'>RANK</p>
-                  <p className='font-bold mt-1'>{rank}</p>
+                  <p className='font-bold mt-1'>#{rank}</p>
                 </div>
-                <div className='flex flex-col items-center'>
+                <div className='h-5 w-[1px] bg-gray-600'></div>
+                <div className='flex flex-col w-full items-center'>
                   <p className='text-xs font-light'>LIVE PRICE</p>
-                  <p className='font-bold mt-1'>{current_price}</p>
+                  <p className='font-bold mt-1'>${current_price}</p>
                 </div>
-                <div className='flex flex-col items-center'>
+                <div className='h-5 w-[1px] bg-gray-600'></div>
+                <div className='flex flex-col w-full items-center'>
                   <p className='text-xs font-light'>MARKET CAP</p>
-                  <p className='font-bold mt-1'>${name}</p>
+                  <p className='font-bold mt-1'>
+                    {market_cap ? (market_cap / 1000000).toFixed(2) : "---"}M
+                  </p>
                 </div>
               </div>
-              <button type='button' className='w-7/12 min-w-xs bg-gray-100 text-sm text-gray-900 font-bold rounded-full py-3 mt-6 mb-10'>
+              <button
+                type='button'
+                className='w-7/12 min-w-xs bg-gray-100 text-sm text-gray-900 font-bold rounded-full py-3 mt-6 mb-10'
+              >
                 PRICE HISTORY
               </button>
             </div>

@@ -2,7 +2,7 @@ import { FC, createContext, ReactNode, useState, useEffect } from "react";
 import useCoinsData from "../hooks/useCoinsData";
 
 // Importing Interfaces
-import { AppCtx, ModalInfoProps } from "../interfaces/interfaces";
+import { AppCtx, CoinProps } from "../interfaces/interfaces";
 
 interface Props {
   children: ReactNode;
@@ -14,11 +14,11 @@ const AppContextProvider: FC<Props> = ({ children }) => {
   const [apiPage, setApiPage] = useState<number>(1);
   const [isScrollable, setIsScrollable] = useState<boolean>(true);
   const [isModalShown, setIsModalShown] = useState<boolean>(false);
-  const [modalInfo, setModalInfo] = useState<ModalInfoProps>({
+  const [modalInfo, setModalInfo] = useState<CoinProps>({
     name: "",
     symbol: "",
     current_price: 0,
-    rank: "---",
+    rank: 0,
     explanation: "---",
     img: "/",
   });

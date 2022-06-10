@@ -13,11 +13,11 @@ const Table: FC = () => {
   const error = ctx?.error;
 
   if (error) {
-    return <p>Failde to fetch Data - reload and try again</p>;
+    return <p className="min-h-screen">Failde to fetch Data - reload and try again</p>;
   }
 
   if (!data) {
-    return <p>Loading ...</p>;
+    return <p className="min-h-screen">Loading ...</p>;
   }
 
   return (
@@ -28,15 +28,17 @@ const Table: FC = () => {
             key={coin.id}
             name={coin.name}
             symbol={coin.symbol}
-            total_volume={coin.total_volume}
-            price_change={coin.price_change_percentage_24h}
             current_price={coin.current_price}
+            price_change={coin.price_change_percentage_24h}
+            total_volume={coin.total_volume}
+            market_cap={coin.market_cap}
+            rank={coin.market_cap_rank}
             img={coin.image}
           />
         );
       })}
     </section>
-  );
+    );
 };
 
 export default Table;

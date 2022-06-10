@@ -29,12 +29,15 @@ export interface CoinDataProps {
   total_volume: number | undefined | null;
 }
 
-export interface CoinCardProps {
+export interface CoinProps {
   name: string | undefined | null;
   symbol: string | undefined | null;
-  price_change: number | null;
   current_price: number | undefined | null;
-  total_volume: number | undefined | null;
+  price_change?: number | null;
+  total_volume?: number | undefined | null;
+  market_cap?: number | undefined | null;
+  rank?: number | undefined | null;
+  explanation?: string;
   img: string | undefined;
 }
 
@@ -46,18 +49,18 @@ export interface AppCtx {
   setIsScrollable: Dispatch<SetStateAction<boolean>>;
   isModalShown: boolean;
   setIsModalShown: Dispatch<SetStateAction<boolean>>;
-  modalInfo: ModalInfoProps | undefined;
-  setModalInfo: Dispatch<SetStateAction<ModalInfoProps>>;
+  modalInfo: CoinProps | undefined;
+  setModalInfo: Dispatch<SetStateAction<CoinProps>>;
 }
 
-export interface ModalInfoProps {
-  name: string | undefined | null;
-  symbol: string | undefined | null;
-  current_price: number | undefined | null;
-  rank: string;
-  explanation: string;
-  img: string | undefined;
-}
+// export interface ModalInfoProps {
+//   name: string | undefined | null;
+//   symbol: string | undefined | null;
+//   current_price: number | undefined | null;
+//   rank: string;
+//   explanation: string;
+//   img: string | undefined;
+// }
 
 export interface NavLinkProps {
   id: number;

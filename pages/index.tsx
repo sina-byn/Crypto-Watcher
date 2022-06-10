@@ -9,13 +9,13 @@ import CoinModal from "../components/HomePage/CoinModal";
 import ScrollTopButton from "../components/UI/ScrollTopButton";
 import Footer from "../components/HomePage/Footer";
 
-const HomePage: NextPage = () => {
+const SpotMarketsPage: NextPage = () => {
   return (
     <>
       <Head>
-        <title>SpotMarkets</title>
+        <title>Spot Markets</title>
       </Head>
-      <div className='container max-w-sm min-h-screen mx-auto'>
+      <div className='container max-w-sm min-h-screen relative mx-auto'>
         <AllCoinsContextProvider>
           <Navbar />
           <Table />
@@ -28,4 +28,4 @@ const HomePage: NextPage = () => {
   );
 };
 
-export default HomePage;
+export default SpotMarketsPage;

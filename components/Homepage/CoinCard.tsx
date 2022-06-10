@@ -6,16 +6,24 @@ import { moveInOut } from "../../helpers/animations";
 import { AppCtx } from "../../interfaces/interfaces";
 
 // Importing Interfaces
-import { CoinCardProps } from "../../interfaces/interfaces";
+import { CoinProps } from "../../interfaces/interfaces";
 
-const CoinCard: FC<CoinCardProps> = (props) => {
-  const { name, symbol, total_volume, price_change, current_price, img } =
-    props;
+const CoinCard: FC<CoinProps> = (props) => {
+  const {
+    name,
+    symbol,
+    current_price,
+    price_change,
+    total_volume,
+    market_cap,
+    rank,
+    img,
+  } = props;
   const [cardTheme, setCardTheme] = useState<string>();
   const ctx: AppCtx | null = useContext<AppCtx | null>(AppContext);
 
   useEffect(() => {
-    const setColor = (price_change: number | null): string => {
+    const setColor = (price_change: number | null | undefined): string => {
       if (price_change) {
         if (price_change > 0) {
           return "success";
@@ -32,14 +40,15 @@ const CoinCard: FC<CoinCardProps> = (props) => {
   const clickHandler = (): void => {
     if (ctx) {
       const { setIsModalShown, setModalInfo, setIsScrollable } = ctx;
-      moveInOut('.modal');
+      moveInOut(".modal");
       setIsScrollable(false);
       setIsModalShown(true);
       setModalInfo({
         name: name,
         symbol: symbol,
         current_price: current_price,
-        rank: "TOP #3",
+        market_cap: market_cap,
+        rank: rank,
         explanation:
           "Launched in May 2003, Binance is the biggest cryptocurrency exchange globally based on daily",
         img: img,
