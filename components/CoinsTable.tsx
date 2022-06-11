@@ -7,7 +7,7 @@ import { CoinsTableProps } from "../interfaces/interfaces";
 import CoinCard from "./CoinCard";
 import Loader from "./UI/Loader";
 
-const CoinsTable: FC<CoinsTableProps> = ({ coins, error, children }) => {
+const CoinsTable: FC<CoinsTableProps> = ({ coins, error }) => {
   if (error) {
     return (
       <p className='text-3xl text-gray-200 font-bold mt-24'>

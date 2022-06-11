@@ -16,14 +16,23 @@ const DeveloperInfo: FC = () => {
         </h4>
         <div className='font-bold'>
           Education:
-          <h4 className=' text-sm text-gray-200 font-light'>
+          <p className=' text-sm text-gray-200 font-light'>
             <span className='block'>Software Engineering Student at KIAU</span>
             <span className='block'>Karaj Islmic Azad University</span>
-          </h4>
+          </p>
         </div>
         <div className="font-bold">
             Skills:
-            <h4 className="text-sm text-gray-200"></h4>
+            <p className="text-sm text-gray-200 font-light">
+                <span className="block">HTML 5</span>
+                <span className="block">CSS 3</span>
+                <span className="block">Sass</span>
+                <span className="block">Tailwind CSS</span>
+                <span className="block">JavaScript</span>
+                <span className="block">TypeScript</span>
+                <span className="block">React.js</span>
+                <span className="block">Next.js</span>
+            </p>
         </div>
         <div className='flex w-full gap-x-4 mt-6 mb-10'>
           <a
