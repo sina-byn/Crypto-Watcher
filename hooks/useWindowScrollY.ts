@@ -6,7 +6,7 @@ const useWindowScrollY = (
 ): void => {
   useEffect(() => {
     window.onscroll = (): void => {
-      if (window.scrollY > 1500 && callbackFunction) {
+      if (window.scrollY > 1000 && callbackFunction) {
         callbackFunction(true);
       } else {
         callbackFunction(false);

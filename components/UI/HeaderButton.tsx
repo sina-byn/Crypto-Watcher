@@ -29,11 +29,11 @@ const HeaderButton: FC = () => {
   };
 
   return (
-    <div className='flex items-center justify-center w-full mb-4'>
+    <div className='flex items-center justify-center w-full -mt-3 mb-6'>
       {selectMode ? (
         <button
           type='button'
-          className='min-w-[200px] text-sm text-gray-100 border-2 border-gray-200 pt-2 pb-3'
+          className='min-w-[150px] text-xs text-gray-100 border-2 border-gray-200 pt-2 pb-3'
           onClick={addHandler}
         >
           Done
@@ -41,7 +41,7 @@ const HeaderButton: FC = () => {
       ) : (
         <button
           type='button'
-          className='min-w-[200px] text-sm text-gray-100 border-2 border-gray-200 pt-2 pb-3'
+          className='min-w-[150px] text-xs text-gray-100 border-2 border-gray-200 pt-2 pb-3'
           onClick={() => {
             if (setSelectMode) setSelectMode(true);
           }}
