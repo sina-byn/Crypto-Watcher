@@ -1,18 +1,18 @@
-import { FC, useContext, useEffect, useState } from "react";
+import { FC, useContext, useState } from "react";
 
 // Importing Context + Interfaces
 import { AppContext } from "../../context/AppContextProvider";
-import useWindowHeight from "../../hooks/useWindowHeight";
 import { AppCtx } from "../../interfaces/interfaces";
+
+// Importing hooks
+import useWindowScrollY from "../../hooks/useWindowScrollY";
 
 const ScrollTopButton: FC = () => {
   const [isShown, setIsShown] = useState<boolean>(false);
   const ctx = useContext<AppCtx | null>(AppContext);
   const isModalShown = ctx?.isModalShown;
 
-  useEffect(() => {
-    useWindowHeight(setIsShown);
-  }, [isShown]);
+  useWindowScrollY(isShown, setIsShown);
 
   const clickHandler = (): void => {
     window.scrollTo({ top: 0, behavior: "smooth" });

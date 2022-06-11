@@ -48,7 +48,7 @@ export interface ApiAddress {
 }
 
 export interface AppCtx {
-  selectedCoins: string[];
+  selectedCoins: string[] | undefined;
   setSelectedCoins: Dispatch<SetStateAction<string[]>>;
   watchlist: string[] | undefined;
   setWatchlist: Dispatch<SetStateAction<string[] | undefined>>;
@@ -58,7 +58,7 @@ export interface AppCtx {
   setIsModalShown: Dispatch<SetStateAction<boolean>>;
   modalInfo: CoinProps | undefined;
   setModalInfo: Dispatch<SetStateAction<CoinProps>>;
-}
+ }
 
 export interface HeaderProps {
   initialSlide: number;
