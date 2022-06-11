@@ -1,24 +1,24 @@
-import { NextPage } from "next";
+import { FC } from "react";
 import Head from "next/head";
 
 // Importing Components
 import Header from "../components/Header";
-import DeveloperInfo from "../components/DeveloperInfo";
+import ProjectInfro from "../components/HomePage/ProjectInfro";
 import ScrollTopButton from "../components/UI/ScrollTopButton";
 
-const DeveloperPage: NextPage = () => {
+const AboutProjectPage: FC = () => {
   return (
     <>
       <Head>
-        <title>Developer | Sina Bayandorian</title>
+        <title>About Project</title>
       </Head>
       <div className='container max-w-sm min-h-screen relative mx-auto'>
-        <Header initialSlide={0} />
-        <DeveloperInfo />
+        <Header initialSlide={3} />
+        <ProjectInfro />
         <ScrollTopButton />
       </div>
     </>
   );
 };
 
-export default DeveloperPage;
+export default AboutProjectPage;

@@ -37,7 +37,7 @@ const WatchlistPage: NextPage = () => {
       <Head>
         <title>Your WatchList</title>
       </Head>
-      <div className='container max-w-sm min-h-screen relative mx-auto text-white'>
+      <div className='container max-w-sm min-h-screen relative mx-auto'>
         <AppContextProvider>
           <Header initialSlide={2} />
           <CoinsTable coins={data} error={error} />

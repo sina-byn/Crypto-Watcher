@@ -29,6 +29,9 @@ const Navbar: FC<Props> = ({ initialSlide }) => {
 
           setTimeout(() => {
             switch (idx) {
+              case 3:
+                router.push("/about");
+                break;
               case 2:
                 router.push("/watchlist");
                 break;
@@ -50,6 +53,9 @@ const Navbar: FC<Props> = ({ initialSlide }) => {
         </SwiperSlide>
         <SwiperSlide className='text-center select-none'>
           <NavLink text='Watchlist' />
+        </SwiperSlide>
+        <SwiperSlide className='text-center select-none'>
+          <NavLink text='About Project' />
         </SwiperSlide>
       </Swiper>
       <div className='indicator w-1 h-1 bg-gray-200 rounded-full mx-auto mt-2'></div>
