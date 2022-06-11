@@ -18,10 +18,8 @@ const HeaderButton: FC = () => {
 
   const addHandler = (): void => {
     const watchlist = useLocalStorage('watchlist');
-    console.log(selectedCoins);
     if (setSelectMode && selectedCoins) {
       const newWatchlist: string[] = Array.from(new Set([...watchlist, ...selectedCoins]));
-      console.log(newWatchlist);
       localStorage.setItem('watchlist', JSON.stringify(newWatchlist));
       setSelectMode(false);
       router.push('/watchlist');

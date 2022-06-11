@@ -7,7 +7,6 @@ import AppContextProvider from "../context/AppContextProvider";
 import Header from "../components/Header";
 import HeaderButton from "../components/UI/HeaderButton";
 import CoinsTable from "../components/CoinsTable";
-import Loader from "../components/UI/Loader";
 import CoinModal from "../components/CoinModal";
 import ScrollTopButton from "../components/UI/ScrollTopButton";
 import Footer from "../components/Footer";

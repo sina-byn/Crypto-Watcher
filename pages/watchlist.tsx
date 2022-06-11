@@ -1,16 +1,16 @@
 import { NextPage } from "next";
 import Head from "next/head";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 // Importing hooks
 import useCoinsData from "../hooks/useCoinsData";
 import useLocalStorage from "../hooks/useLocalStorage";
+import useForceUpdate from "../hooks/useForceUpdate";
 
 // Importing Components
 import AppContextProvider from "../context/AppContextProvider";
 import Header from "../components/Header";
 import CoinsTable from "../components/CoinsTable";
-import Loader from "../components/UI/Loader";
 import CoinModal from "../components/CoinModal";
 import ScrollTopButton from "../components/UI/ScrollTopButton";
 
@@ -23,14 +23,11 @@ const WatchlistPage: NextPage = () => {
     }`
   );
 
+  const forceUpdate = useForceUpdate();
+
   useEffect(() => {
     const watchlist = useLocalStorage("watchlist");
-    if (watchlist.length === 0) {
-      const defaultWatchlist = ["bitcoin"];
-      setIds(defaultWatchlist);
-    } else {
-      setIds(watchlist);
-    }
+    setIds(watchlist);
   }, []);
 
   return (
@@ -41,7 +38,12 @@ const WatchlistPage: NextPage = () => {
       <div className='container max-w-sm relative mx-auto'>
         <AppContextProvider>
           <Header initialSlide={2} />
-          <CoinsTable coins={data} error={error} />
+          <CoinsTable
+            coins={data}
+            error={error}
+            ids={ids}
+            forceUpdate={forceUpdate}
+          />
           <CoinModal />
           <ScrollTopButton />
         </AppContextProvider>

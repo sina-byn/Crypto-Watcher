@@ -13,23 +13,15 @@ interface Props {
 
 const Checkbox: FC<Props> = ({ id }) => {
   const [isSelected, setIsSelected] = useState<boolean | undefined>(false);
-  const [isRemovable, setIsRemovable] = useState<boolean>(true);
   const checkboxRef = useRef<HTMLInputElement>(null);
 
   const ctx = useContext<AppCtx | null>(AppContext);
-  // const watchlist = ctx?.watchlist;
-  // const setWatchlist = ctx?.setWatchlist;
   const selectedCoins = ctx?.selectedCoins;
   const setSelectedCoins = ctx?.setSelectedCoins;
 
   useEffect(() => {
-    setIsRemovable(true);
     if (id) {
       const watchlist = useLocalStorage("watchlist");
-      const defaultWatchlist = ["bitcoin", "ethereum", "tether", "solana"];
-      if (defaultWatchlist.indexOf(id) > -1) {
-        setIsRemovable(false);
-      }
       if (watchlist.indexOf(id) > -1) {
         setIsSelected(true);
       }
@@ -37,23 +29,12 @@ const Checkbox: FC<Props> = ({ id }) => {
   }, []);
 
   const inputHandler = (): void => {
-    if (isRemovable) {
-      setIsSelected(checkboxRef.current?.checked);
-    }
-    if (setSelectedCoins && selectedCoins && id) {
-      if (!isSelected) {
-        const unifiedSelectedCoins: string[] = Array.from(
-          new Set([...selectedCoins, id])
-        );
-        setSelectedCoins(unifiedSelectedCoins);
+    setIsSelected(checkboxRef.current?.checked);
+    if (id && setSelectedCoins) {
+      if (selectedCoins) {
+        setSelectedCoins([...selectedCoins, id]);
       } else {
-        if (isRemovable) {
-          const coinIDX: number = selectedCoins.indexOf(id);
-          if (coinIDX !== -1) {
-            selectedCoins.splice(coinIDX, 1);
-            setSelectedCoins(selectedCoins);
-          }
-        }
+        setSelectedCoins([id]);
       }
     }
   };

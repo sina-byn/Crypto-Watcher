@@ -1,4 +1,5 @@
 import { FC } from "react";
+import Link from "next/link";
 
 // Importing interfaces
 import { CoinsTableProps } from "../interfaces/interfaces";
@@ -7,12 +8,30 @@ import { CoinsTableProps } from "../interfaces/interfaces";
 import CoinCard from "./CoinCard";
 import Loader from "./UI/Loader";
 
-const CoinsTable: FC<CoinsTableProps> = ({ coins, error }) => {
+const CoinsTable: FC<CoinsTableProps> = ({
+  coins,
+  error,
+  ids,
+  forceUpdate,
+}) => {
   if (error) {
     return (
       <p className='text-3xl text-gray-200 font-bold mt-24'>
         Failde To Fetch Data - Please Try Again
       </p>
+    );
+  }
+
+  if (!ids?.length && ids) {
+    return (
+      <>
+        <p className='text-3xl text-gray-200 font-bold mt-24'>
+          Your Watchlist is Empty.
+        </p>
+        <Link href='/'>
+          <a>Add Coins</a>
+        </Link>
+      </>
     );
   }
 
@@ -35,6 +54,8 @@ const CoinsTable: FC<CoinsTableProps> = ({ coins, error }) => {
             market_cap={coin.market_cap}
             rank={coin.market_cap_rank}
             img={coin.image}
+            ids={ids}
+            forceUpdate={forceUpdate}
           />
         );
       })}
