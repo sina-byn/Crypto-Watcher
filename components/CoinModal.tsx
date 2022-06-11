@@ -1,4 +1,4 @@
-import { FC, useContext } from "react";
+import { FC, useContext, useEffect, useRef } from "react";
 
 // Importing Context + Interfaces
 import { AppContext } from "../context/AppContextProvider";
@@ -11,12 +11,24 @@ const CoinModal: FC = () => {
   const ctx: AppCtx | null = useContext<AppCtx | null>(AppContext);
   if (ctx) {
     const { isModalShown, setIsModalShown, modalInfo } = ctx;
+    const coverRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+      if (coverRef.current) {
+        const cover: HTMLDivElement = coverRef.current;
+        cover.style.opacity = "15%";
+      }
+    }, [isModalShown]);
 
     const closeHandler = (): void => {
-      moveInOut(".modal");
-      setTimeout(() => {
-        setIsModalShown(false);
-      }, 200);
+      if (coverRef.current) {
+        const cover: HTMLDivElement = coverRef.current;
+        cover.style.opacity = "0";
+        moveInOut(".modal");
+        setTimeout(() => {
+          setIsModalShown(false);
+        }, 200);
+      }
     };
 
     if (modalInfo) {
@@ -37,11 +49,12 @@ const CoinModal: FC = () => {
           } modal items-end w-full max-w-sm h-screen fixed top-0 z-10 text-gray-200 translate-y-full transition-transform duration-300`}
         >
           <div
-            className='backdrop h-full w-full absolute -z-10'
+            className='backdrop h-full w-full absolute -z-10 bg-gradient-to-r from-stop-1 to-stop-2 cursor-pointer'
             onClick={closeHandler}
+            ref={coverRef}
           ></div>
           <div className='flex items-end w-full bg-gradient-to-r from-stop-1 to-stop-2 rounded-t-3xl'>
-            <div className='modal-data flex flex-col items-center justify-center gap-y-6 w-full relative bg-gradient-to-t from-primary-dark to-primary-light rounded-t-3xl translate-y-[3px]'>
+            <div className='modal-data shad flex flex-col items-center justify-center gap-y-6 w-full relative bg-gradient-to-t from-primary-dark to-primary-light rounded-t-3xl translate-y-[3px]'>
               <figure className='absolute w-28 -top-14'>
                 <img src={img} alt={name + "sign"} />
               </figure>
