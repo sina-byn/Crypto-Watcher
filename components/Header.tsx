@@ -4,7 +4,7 @@ import {FC} from 'react';
 import { HeaderProps } from '../interfaces/interfaces';
 
 // Importing Components
-import Navbar from './HomePage/Navbar';
+import Navbar from './Navbar';
 
 const Header: FC<HeaderProps> = ({ initialSlide, children }) => {
     return (

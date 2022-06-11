@@ -1,30 +1,26 @@
 import { FC } from "react";
 
-import { CoinDataProps } from "../../interfaces/interfaces";
+// Importing interfaces
+import { CoinsTableProps } from "../interfaces/interfaces";
 
 // Importing Components
 import CoinCard from "./CoinCard";
 
-interface Props {
-  coins: CoinDataProps[] | undefined;
-  error: object | undefined;
-}
-
-const Table: FC<Props> = ({ coins, error }) => {
+const CoinsTable: FC<CoinsTableProps> = ({ coins, error, children }) => {
   if (error) {
     return (
-      <p className='min-h-screen'>
-        Failde to fetch Data - reload and try again
+      <p className='text-3xl text-gray-200 font-bold mt-24'>
+        Failde To Fetch Data - Please Try Again
       </p>
     );
   }
 
   if (!coins) {
-    return <p className='min-h-screen'>Loading ...</p>;
+    return <>{children}</>;
   }
 
   return (
-    <section className='flex flex-col gap-y-3 min-h-screen px-6 pb-10'>
+    <section className='flex flex-col gap-y-3 px-6 pb-10'>
       {coins?.map((coin) => {
         return (
           <CoinCard
@@ -45,4 +41,4 @@ const Table: FC<Props> = ({ coins, error }) => {
   );
 };
 
-export default Table;
+export default CoinsTable;

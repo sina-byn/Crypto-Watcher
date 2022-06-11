@@ -1,7 +1,7 @@
 import { Dispatch, FC, SetStateAction, useEffect, useState } from "react";
 
 // Importing Components
-import PaginationButton from "../UI/PaginationButton";
+import PaginationButton from "./UI/PaginationButton";
 
 interface FooterProps {
   setApiPageNo: Dispatch<SetStateAction<number | undefined>>;

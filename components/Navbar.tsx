@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
 // Importing Components
-import NavLink from "../UI/NavLink";
+import NavLink from "./UI/NavLink";
 
 interface Props {
   initialSlide: number;
@@ -42,7 +42,7 @@ const Navbar: FC<Props> = ({ initialSlide }) => {
                 router.push("/developer");
                 break;
             }
-          }, 800);
+          }, 1000);
         }}
       >
         <SwiperSlide className='text-center select-none'>

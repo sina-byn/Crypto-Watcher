@@ -70,6 +70,12 @@ export interface UseLocalStorage {
   isFalsy: boolean;
 }
 
+export interface CoinsTableProps {
+  coins: CoinDataProps[] | undefined;
+  error: object | undefined;
+  children: ReactNode;
+}
+
 // ath: 69045
 // ath_change_percentage: -55.7648
 // ath_date: "2021-11-10T14:24:11.849Z"

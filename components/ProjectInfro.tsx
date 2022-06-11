@@ -51,12 +51,18 @@ const ProjectInfro: FC = () => {
         <p className='mt-4 ml-6'>FontAwesome Icons</p>
         <p className='mt-1 ml-6'>Google Fonts - lato Font</p>
       </div>
-      <Swiper className="w-full mt-6 mb-12 mx-auto cursor-grab" initialSlide={1} slidesPerView={1.5} centeredSlides={true} spaceBetween={10} >
-        <SwiperSlide>
-          <Image src='/design-1.png' alt='design-1' width={400} height={860} />
-        </SwiperSlide>
+      <Swiper
+        className='w-full mt-6 mb-8 mx-auto cursor-grab'
+        initialSlide={1}
+        slidesPerView={1.5}
+        centeredSlides={true}
+        spaceBetween={10}
+      >
         <SwiperSlide>
           <Image src='/design-2.png' alt='design-2' width={400} height={860} />
+        </SwiperSlide>
+        <SwiperSlide>
+          <Image src='/design-1.png' alt='design-1' width={400} height={860} />
         </SwiperSlide>
         <SwiperSlide>
           <Image src='/design-3.png' alt='design-3' width={400} height={860} />

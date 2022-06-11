@@ -12,7 +12,7 @@ const DeveloperPage: NextPage = () => {
       <Head>
         <title>Developer | Sina Bayandorian</title>
       </Head>
-      <div className='container max-w-sm min-h-screen relative mx-auto'>
+      <div className='container max-w-sm relative mx-auto'>
         <Header initialSlide={0} />
         <DeveloperInfo />
         <ScrollTopButton />

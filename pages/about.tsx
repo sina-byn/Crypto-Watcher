@@ -3,7 +3,7 @@ import Head from "next/head";
 
 // Importing Components
 import Header from "../components/Header";
-import ProjectInfro from "../components/HomePage/ProjectInfro";
+import ProjectInfro from "../components/ProjectInfro";
 import ScrollTopButton from "../components/UI/ScrollTopButton";
 
 const AboutProjectPage: FC = () => {
@@ -12,7 +12,7 @@ const AboutProjectPage: FC = () => {
       <Head>
         <title>About Project</title>
       </Head>
-      <div className='container max-w-sm min-h-screen relative mx-auto'>
+      <div className='container max-w-sm relative mx-auto'>
         <Header initialSlide={3} />
         <ProjectInfro />
         <ScrollTopButton />

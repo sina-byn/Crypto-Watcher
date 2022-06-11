@@ -1,17 +1,17 @@
 import { FC, useContext } from "react";
 
 // Importing Context + Interfaces
-import { AppContext } from "../../context/AppContextProvider";
-import { AppCtx } from "../../interfaces/interfaces";
+import { AppContext } from "../context/AppContextProvider";
+import { AppCtx } from "../interfaces/interfaces";
 
 // Importing Interfaces
-import { CoinProps } from "../../interfaces/interfaces";
+import { CoinProps } from "../interfaces/interfaces";
 
 // Importing Functions
-import { moveInOut } from "../../helpers/animations";
+import { moveInOut } from "../helpers/animations";
 
 // Importing Components
-import Checkbox from "../UI/Checkbox";
+import Checkbox from "./UI/Checkbox";
 
 const CoinCard: FC<CoinProps> = (props) => {
   const {

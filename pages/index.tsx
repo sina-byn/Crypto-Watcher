@@ -6,10 +6,11 @@ import { useState } from "react";
 import AppContextProvider from "../context/AppContextProvider";
 import Header from "../components/Header";
 import HeaderButton from "../components/UI/HeaderButton";
-import Table from "../components/HomePage/CoinsTable";
-import CoinModal from "../components/HomePage/CoinModal";
+import CoinsTable from "../components/CoinsTable";
+import Loader from "../components/UI/Loader";
+import CoinModal from "../components/CoinModal";
 import ScrollTopButton from "../components/UI/ScrollTopButton";
-import Footer from "../components/HomePage/Footer";
+import Footer from "../components/Footer";
 import useCoinsData from "../hooks/useCoinsData";
 
 const SpotMarketsPage: NextPage = () => {
@@ -24,12 +25,14 @@ const SpotMarketsPage: NextPage = () => {
       <Head>
         <title>Spot Markets</title>
       </Head>
-      <div className='container max-w-sm min-h-screen relative mx-auto'>
+      <div className='container max-w-sm relative mx-auto'>
         <AppContextProvider>
           <Header initialSlide={1}>
             <HeaderButton />
           </Header>
-          <Table coins={data} error={error} />
+          <CoinsTable coins={data} error={error}>
+            <Loader height="h-[55vh]" />
+          </CoinsTable>
           <CoinModal />
           <ScrollTopButton />
           <Footer setApiPageNo={setApiPageNo} />

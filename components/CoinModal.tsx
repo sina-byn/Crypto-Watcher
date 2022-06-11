@@ -1,11 +1,11 @@
 import { FC, useContext } from "react";
 
 // Importing Context + Interfaces
-import { AppContext } from "../../context/AppContextProvider";
-import { AppCtx } from "../../interfaces/interfaces";
+import { AppContext } from "../context/AppContextProvider";
+import { AppCtx } from "../interfaces/interfaces";
 
 // Importing Functions
-import { moveInOut } from "../../helpers/animations";
+import { moveInOut } from "../helpers/animations";
 
 const CoinModal: FC = () => {
   const ctx: AppCtx | null = useContext<AppCtx | null>(AppContext);
