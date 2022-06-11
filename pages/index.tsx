@@ -26,7 +26,7 @@ const SpotMarketsPage: NextPage = () => {
       </Head>
       <div className='container max-w-sm min-h-screen relative mx-auto'>
         <AppContextProvider>
-          <Header initialSlide={0}>
+          <Header initialSlide={1}>
             <HeaderButton />
           </Header>
           <Table coins={data} error={error} />

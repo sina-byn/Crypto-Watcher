@@ -32,8 +32,11 @@ const Navbar: FC<Props> = ({ initialSlide }) => {
               case 2:
                 router.push("/watchlist");
                 break;
-              default:
+              case 1:
                 router.push("/");
+                break;
+              default:
+                router.push("/developer");
                 break;
             }
           }, 800);
