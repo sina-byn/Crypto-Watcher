@@ -1,10 +1,11 @@
 import { FC } from "react";
+import Image from "next/image";
 
 const DeveloperInfo: FC = () => {
   return (
     <section className='flex flex-col items-center justify-center w-6/12 min-w-[250px] mx-auto'>
       <figure>
-        <img src='/pic.png' alt='Developer' />
+        <Image src='/pic.png' alt="Developer" width={600} height={780} />
       </figure>
       <div className='flex flex-col gap-y-3 text-gray-500 mx-auto mt-6'>
         <p className='font-bold'>
