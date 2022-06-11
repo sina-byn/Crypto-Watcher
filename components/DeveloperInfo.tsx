@@ -5,7 +5,7 @@ const DeveloperInfo: FC = () => {
   return (
     <section className='flex flex-col items-center justify-center w-6/12 min-w-[250px] mx-auto'>
       <figure>
-        <Image src='/pic.png' alt='Developer' width={600} height={780} />
+        <Image src='/pic.png' alt='Developer' width={600} height={780} loading={"eager"} />
       </figure>
       <div className='flex flex-col gap-y-3 text-gray-500 mx-auto mt-6'>
         <h4 className='font-bold'>
@@ -20,6 +20,10 @@ const DeveloperInfo: FC = () => {
             <span className='block'>Software Engineering Student at KIAU</span>
             <span className='block'>Karaj Islmic Azad University</span>
           </h4>
+        </div>
+        <div className="font-bold">
+            Skills:
+            <h4 className="text-sm text-gray-200"></h4>
         </div>
         <div className='flex w-full gap-x-4 mt-6 mb-10'>
           <a

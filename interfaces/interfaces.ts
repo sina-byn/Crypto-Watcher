@@ -73,7 +73,6 @@ export interface UseLocalStorage {
 export interface CoinsTableProps {
   coins: CoinDataProps[] | undefined;
   error: object | undefined;
-  children: ReactNode;
 }
 
 // ath: 69045

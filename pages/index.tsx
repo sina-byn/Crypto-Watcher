@@ -30,9 +30,7 @@ const SpotMarketsPage: NextPage = () => {
           <Header initialSlide={1}>
             <HeaderButton />
           </Header>
-          <CoinsTable coins={data} error={error}>
-            <Loader height="h-[55vh]" />
-          </CoinsTable>
+          <CoinsTable coins={data} error={error} />
           <CoinModal />
           <ScrollTopButton />
           <Footer setApiPageNo={setApiPageNo} />

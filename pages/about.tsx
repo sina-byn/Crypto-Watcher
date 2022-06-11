@@ -3,7 +3,7 @@ import Head from "next/head";
 
 // Importing Components
 import Header from "../components/Header";
-import ProjectInfro from "../components/ProjectInfro";
+import ProjectInfro from "../components/ProjectInfo";
 import ScrollTopButton from "../components/UI/ScrollTopButton";
 
 const AboutProjectPage: FC = () => {

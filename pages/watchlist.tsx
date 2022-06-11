@@ -41,9 +41,7 @@ const WatchlistPage: NextPage = () => {
       <div className='container max-w-sm relative mx-auto'>
         <AppContextProvider>
           <Header initialSlide={2} />
-          <CoinsTable coins={data} error={error}>
-            <Loader height="h-[70vh]" />
-          </CoinsTable>
+          <CoinsTable coins={data} error={error} />
           <CoinModal />
           <ScrollTopButton />
         </AppContextProvider>
