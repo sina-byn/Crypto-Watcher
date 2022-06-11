@@ -51,6 +51,7 @@ const ProjectInfro: FC = () => {
         <p className='mt-4 ml-6'>FontAwesome Icons</p>
         <p className='mt-1 ml-6'>Google Fonts - lato Font</p>
       </div>
+      <p className="text-gray-500 font-bold mt-10 mx-auto">Original Design</p>
       <Swiper
         className='w-full mt-6 mb-8 mx-auto cursor-grab'
         initialSlide={1}

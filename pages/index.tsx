@@ -13,7 +13,7 @@ import Footer from "../components/Footer";
 import useCoinsData from "../hooks/useCoinsData";
 
 const SpotMarketsPage: NextPage = () => {
-  const [apiPageNo, setApiPageNo] = useState<number>();
+  const [apiPageNo, setApiPageNo] = useState<number>(1);
 
   const { data, error } = useCoinsData(
     `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=${apiPageNo}&sparkline=false`
@@ -32,7 +32,7 @@ const SpotMarketsPage: NextPage = () => {
           <CoinsTable coins={data} error={error} />
           <CoinModal />
           <ScrollTopButton />
-          <Footer setApiPageNo={setApiPageNo} />
+          <Footer apiPageNo={apiPageNo} setApiPageNo={setApiPageNo} />
         </AppContextProvider>
       </div>
     </>

@@ -16,22 +16,24 @@ const CoinsTable: FC<CoinsTableProps> = ({
 }) => {
   if (error) {
     return (
-      <p className='text-3xl text-gray-200 font-bold mt-24'>
-        Failde To Fetch Data - Please Try Again
+      <p className='text-2xl text-center text-gray-200 font-bold mt-24 mx-auto'>
+        Failed To Fetch Data - Please Try Again
       </p>
     );
   }
 
   if (!ids?.length && ids) {
     return (
-      <>
-        <p className='text-3xl text-gray-200 font-bold mt-24'>
+      <div className='flex flex-col items-center gap-y-6 mx-auto'>
+        <p className='text-2xl text-center text-gray-200 font-bold mt-24'>
           Your Watchlist is Empty.
         </p>
         <Link href='/'>
-          <a>Add Coins</a>
+          <a className='text-gray-200 text-sm border-2 border-gray-200 py-2 px-3 hover:bg-gray-200 hover:bg-opacity-25'>
+            Add Coins
+          </a>
         </Link>
-      </>
+      </div>
     );
   }
 
