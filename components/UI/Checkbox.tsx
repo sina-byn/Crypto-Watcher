@@ -1,4 +1,4 @@
-import { FC, useContext, useRef, useState } from "react";
+import { FC, useContext, useEffect, useRef, useState } from "react";
 
 // Importing Context + Interfaces
 import { AppContext } from "../../context/AppContextProvider";
@@ -13,27 +13,46 @@ interface Props {
 
 const Checkbox: FC<Props> = ({ id }) => {
   const [isSelected, setIsSelected] = useState<boolean | undefined>(false);
+  const [isRemovable, setIsRemovable] = useState<boolean>(true);
   const checkboxRef = useRef<HTMLInputElement>(null);
 
   const ctx = useContext<AppCtx | null>(AppContext);
-  const watchlist = ctx?.watchlist;
-  const setWatchlist = ctx?.setWatchlist;
+  // const watchlist = ctx?.watchlist;
+  // const setWatchlist = ctx?.setWatchlist;
+  const selectedCoins = ctx?.selectedCoins;
+  const setSelectedCoins = ctx?.setSelectedCoins;
+
+  useEffect(() => {
+    setIsRemovable(true);
+    if (id) {
+      const watchlist = useLocalStorage("watchlist");
+      const defaultWatchlist = ["bitcoin", "ethereum", "tether", "solana"];
+      if (defaultWatchlist.indexOf(id) > -1) {
+        setIsRemovable(false);
+      }
+      if (watchlist.indexOf(id) > -1) {
+        setIsSelected(true);
+      }
+    }
+  }, []);
 
   const inputHandler = (): void => {
-    setIsSelected(checkboxRef.current?.checked);
-    if (setWatchlist && watchlist && id) {
+    if (isRemovable) {
+      setIsSelected(checkboxRef.current?.checked);
+    }
+    if (setSelectedCoins && selectedCoins && id) {
       if (!isSelected) {
-        const unifiedWatchlist: string[] = Array.from(
-          new Set([...watchlist, id])
-        );
-        setWatchlist(unifiedWatchlist);
-        useLocalStorage(unifiedWatchlist);
+        const unifiedSelectedCoins: string[] = Array.from(
+          new Set([...selectedCoins, id])
+          );
+          setSelectedCoins(unifiedSelectedCoins);
       } else {
-        const coinIDX: number = watchlist.indexOf(id);
-        if (coinIDX !== -1) {
-          watchlist.splice(coinIDX, 1);
-          setWatchlist(watchlist);
-          useLocalStorage(watchlist);
+        if (isRemovable) {
+          const coinIDX: number = selectedCoins.indexOf(id);
+          if (coinIDX !== -1) {
+            selectedCoins.splice(coinIDX, 1);
+            setSelectedCoins(selectedCoins);
+          }
         }
       }
     }
@@ -43,8 +62,19 @@ const Checkbox: FC<Props> = ({ id }) => {
     <label
       onClick={inputHandler}
       htmlFor={`${id}-checkbox`}
-      className={`${isSelected ? "bg-blue-500" : ""} w-4 h-4 bg-gray-100 ml-2`}
+      className='grid place-items-center h-full'
     >
+      <div className='w-5 h-5 bg-gray-100 rounded-full cursor-pointer ml-2'>
+        {isSelected ? (
+          <img
+            src='/icons/circle-check.svg'
+            alt='Circle Check Icon'
+            className='cursor-pointer'
+          />
+        ) : (
+          ""
+        )}
+      </div>
       <input
         ref={checkboxRef}
         type='checkbox'

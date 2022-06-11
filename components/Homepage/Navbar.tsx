@@ -29,16 +29,19 @@ const Navbar: FC<Props> = ({ initialSlide }) => {
 
           setTimeout(() => {
             switch (idx) {
-              case 1:
+              case 2:
                 router.push("/watchlist");
                 break;
-                default:
+              default:
                 router.push("/");
                 break;
             }
           }, 800);
         }}
       >
+        <SwiperSlide className='text-center select-none'>
+          <NavLink text='Developer' />
+        </SwiperSlide>
         <SwiperSlide className='text-center select-none'>
           <NavLink text='Spot Markets' />
         </SwiperSlide>

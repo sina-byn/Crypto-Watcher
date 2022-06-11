@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 // Importing hooks
 import useCoinsData from "../hooks/useCoinsData";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 // Importing Components
 import AppContextProvider from "../context/AppContextProvider";
@@ -16,14 +17,17 @@ const WatchlistPage: NextPage = () => {
   const [ids, setIds] = useState<string[]>();
 
   const { data, error } = useCoinsData(
-      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${ids?.length ? ids.join(",") : ""}`
+    `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${
+      ids?.length ? ids.join(",") : ""
+    }`
   );
 
   useEffect(() => {
-    const watchlistStr: string | null = localStorage.getItem('watchlist');
-    console.log(watchlistStr);
-    if (watchlistStr) {
-      const watchlist: string[] = JSON.parse(watchlistStr);
+    const watchlist = useLocalStorage("watchlist");
+    if (watchlist.length === 0) {
+      const defaultWatchlist = ["bitcoin"];
+      setIds(defaultWatchlist);
+    } else {
       setIds(watchlist);
     }
   }, []);

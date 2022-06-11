@@ -48,8 +48,10 @@ export interface ApiAddress {
 }
 
 export interface AppCtx {
-  watchlist: string[];
-  setWatchlist: Dispatch<SetStateAction<string[]>>;
+  selectedCoins: string[];
+  setSelectedCoins: Dispatch<SetStateAction<string[]>>;
+  watchlist: string[] | undefined;
+  setWatchlist: Dispatch<SetStateAction<string[] | undefined>>;
   selectMode: boolean;
   setSelectMode: Dispatch<SetStateAction<boolean>>;
   isModalShown: boolean;
@@ -61,6 +63,11 @@ export interface AppCtx {
 export interface HeaderProps {
   initialSlide: number;
   children?: ReactNode;
+}
+
+export interface UseLocalStorage {
+  list: string[];
+  isFalsy: boolean;
 }
 
 // ath: 69045

@@ -1,15 +1,32 @@
 import { FC, useContext } from "react";
+import { NextRouter, useRouter } from "next/router";
 
 // Importing Context + Interfaces
 import { AppContext } from "../../context/AppContextProvider";
 import { AppCtx } from "../../interfaces/interfaces";
 
-const WatchlistButton: FC = () => {
+// Importing hooks
+import useLocalStorage from "../../hooks/useLocalStorage";
+
+const HeaderButton: FC = () => {
+  const router: NextRouter = useRouter();
+
   const ctx = useContext<AppCtx | null>(AppContext);
   const selectMode = ctx?.selectMode;
   const setSelectMode = ctx?.setSelectMode;
+  const selectedCoins = ctx?.selectedCoins;
 
-  const submitHandler = (): void => {};
+  const addHandler = (): void => {
+    const watchlist = useLocalStorage('watchlist');
+    console.log(selectedCoins);
+    if (setSelectMode && selectedCoins) {
+      const newWatchlist: string[] = Array.from(new Set([...watchlist, ...selectedCoins]));
+      console.log(newWatchlist);
+      localStorage.setItem('watchlist', JSON.stringify(newWatchlist));
+      setSelectMode(false);
+      router.push('/watchlist');
+    }
+  };
 
   return (
     <div className='flex items-center justify-center w-full mb-4'>
@@ -17,6 +34,7 @@ const WatchlistButton: FC = () => {
         <button
           type='button'
           className='min-w-[200px] text-sm text-gray-100 border-2 border-gray-200 pt-2 pb-3'
+          onClick={addHandler}
         >
           Done
         </button>
@@ -35,4 +53,4 @@ const WatchlistButton: FC = () => {
   );
 };
 
-export default WatchlistButton;
+export default HeaderButton;
