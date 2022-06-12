@@ -1,10 +1,10 @@
-import { FC, useEffect } from "react";
+import { FC } from "react";
 
 // Importing interfaces
-import { CoinDataCellProps } from "../../interfaces/interfaces";
+import { CoinDataCellProps } from "../interfaces/interfaces";
 
 // Importing hooks
-import useDate from "../../hooks/useDate";
+import useDate from "../hooks/useDate";
 
 const CoinDataCell: FC<CoinDataCellProps> = (props) => {
   const {
@@ -18,13 +18,6 @@ const CoinDataCell: FC<CoinDataCellProps> = (props) => {
     market_cap,
     market_cap_change,
   } = props;
-
-  useEffect(() => {
-    if (ath_date) {
-      const date = new Date(ath_date);
-      console.log(date.getMonth());
-    }
-  }, []);
 
   const isPositive = (value: number): boolean => {
     if (value >= 0) {

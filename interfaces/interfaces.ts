@@ -75,6 +75,18 @@ export interface CoinsTableProps {
   forceUpdate?: Function;
 }
 
+export interface CoinDataCellProps {
+  ath?: number | null | undefined;
+  ath_change_percentage?: number | null | undefined;
+  ath_date?: string | null | undefined;
+  atl?: number | null | undefined;
+  atl_change_percentage?: number | null | undefined;
+  atl_date?: string | null | undefined;
+  circulating_supply?: number | null | undefined;
+  market_cap?: number | null | undefined;
+  market_cap_change?: number | null | undefined;
+}
+
 // ath: 69045
 // ath_change_percentage: -55.7648
 // ath_date: "2021-11-10T14:24:11.849Z"
