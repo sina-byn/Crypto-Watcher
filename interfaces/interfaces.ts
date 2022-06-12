@@ -7,7 +7,7 @@ export interface CoinDataProps {
   atl: number | undefined | null;
   atl_change_percentage: number | undefined | null;
   atl_date: string | undefined | null;
-  circulating_suuply: number | undefined | null;
+  circulating_supply: number | undefined | null;
   current_price: number | undefined | null;
   fully_diluted_valuation: number | undefined | null;
   high_24h: number | undefined | null;

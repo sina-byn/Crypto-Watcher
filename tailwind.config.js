@@ -28,6 +28,7 @@ module.exports = {
         'lato-bold': ["latobold", "sans-serif"],
       },
       fontSize: {
+        '2xs': '10px',
         md: '16px',
       },
       opacity: {

@@ -18,8 +18,12 @@ const WatchlistPage: NextPage = () => {
   const [ids, setIds] = useState<string[]>();
 
   const { data, error } = useCoinsData(
-    `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${
-      ids?.length ? ids.join(",") : ""
+    `${
+      ids?.length
+        ? `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${ids.join(
+            ","
+          )}`
+        : ""
     }`
   );
 

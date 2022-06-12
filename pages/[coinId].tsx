@@ -2,16 +2,13 @@ import { NextPage } from "next";
 import Head from "next/head";
 import { NextRouter, useRouter } from "next/router";
 import { ParsedUrlQuery } from "querystring";
-import { useEffect, useState } from "react";
 
 // Importing hooks
 import useCoinsData from "../hooks/useCoinsData";
 
-// Importing interfaces
-import { CoinDataProps } from "../interfaces/interfaces";
-
 // Importing Components
 import Loader from "../components/UI/Loader";
+import CoinData from "../components/CoinData";
 
 const CoinHistoryPage: NextPage = () => {
   const router: NextRouter = useRouter();
@@ -26,6 +23,8 @@ const CoinHistoryPage: NextPage = () => {
     }`
   );
 
+  //   console.log(data);
+
   if (error) {
     return (
       <p className='text-2xl text-center text-gray-200 font-bold mt-24 mx-auto'>
@@ -35,7 +34,11 @@ const CoinHistoryPage: NextPage = () => {
   }
 
   if (!data) {
-    return <Loader />;
+    return (
+      <div className="mt-24">
+        <Loader />
+      </div>
+    );
   }
 
   return (
@@ -43,11 +46,8 @@ const CoinHistoryPage: NextPage = () => {
       <Head>
         <title>{data[0].name} Price History</title>
       </Head>
-      <div className='text-white'>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. At veritatis,
-        facilis minus numquam minima debitis, hic atque asperiores expedita
-        harum quaerat soluta dolor corrupti voluptatibus est laboriosam iste
-        quos. Saepe.
+      <div className='container flex flex-col justify-end max-w-sm min-h-screen relative mx-auto'>
+        <CoinData data={data[0]} />
       </div>
     </>
   );

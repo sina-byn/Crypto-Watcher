@@ -1,4 +1,5 @@
 import { FC, useContext, useEffect, useRef } from "react";
+import Link from "next/link";
 
 // Importing Context + Interfaces
 import { AppContext } from "../context/AppContextProvider";
@@ -33,6 +34,7 @@ const CoinModal: FC = () => {
 
     if (modalInfo) {
       const {
+        id,
         name,
         symbol,
         current_price,
@@ -83,12 +85,11 @@ const CoinModal: FC = () => {
                   </p>
                 </div>
               </div>
-              <button
-                type='button'
-                className='w-7/12 min-w-xs bg-gray-100 text-sm text-gray-900 font-bold rounded-full py-3 mt-6 mb-10'
-              >
-                PRICE HISTORY
-              </button>
+              <Link href={`/${id}`}>
+                <a className='w-7/12 min-w-xs bg-gray-100 text-sm text-center text-gray-900 font-bold rounded-full py-3 mt-6 mb-10'>
+                  PRICE HISTORY
+                </a>
+              </Link>
             </div>
           </div>
         </section>
@@ -96,7 +97,7 @@ const CoinModal: FC = () => {
     }
   }
 
-  return <p>Failed to Load Data Please Try Again</p>;
+  return <p className="text-center">Failed to Load Data - Please Try Again</p>;
 };
 
 export default CoinModal;
