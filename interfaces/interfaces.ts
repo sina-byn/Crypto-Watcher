@@ -87,6 +87,25 @@ export interface CoinDataCellProps {
   market_cap_change?: number | null | undefined;
 }
 
+export interface CoinHistoryProps {
+  market_caps: number[][];
+  prices: number[][];
+  total_volumes: number[][];
+}
+
+export interface TableData {
+  x: number;
+  y: number;
+}
+
+export interface CoinHistoryData {
+  day: TableData[];
+  week: TableData[];
+  year: TableData[];
+  month: TableData[];
+  details: CoinDataProps;
+}
+
 // ath: 69045
 // ath_change_percentage: -55.7648
 // ath_date: "2021-11-10T14:24:11.849Z"

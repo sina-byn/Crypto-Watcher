@@ -1,31 +1,100 @@
 import { NextPage } from "next";
 import Head from "next/head";
+import { useEffect, useState } from "react";
 import { NextRouter, useRouter } from "next/router";
 import { ParsedUrlQuery } from "querystring";
 
-// Importing hooks
-import useCoinsData from "../hooks/useCoinsData";
+// Importing axios
+import axios from "axios";
+import axiosObj from "../services/Api";
+
+// Importing Interfaces
+import { CoinHistoryData } from "../interfaces/interfaces";
 
 // Importing Components
 import Loader from "../components/UI/Loader";
+import CoinHistoryChart from "../components/UI/CoinHistoryChart";
+import CoinDataTable from "../components/CoinDataTable";
+import TimeFormatButtons from "../components/TimeFormatButtons";
 import CoinData from "../components/CoinData";
 
 const CoinHistoryPage: NextPage = () => {
   const router: NextRouter = useRouter();
   const qurey: ParsedUrlQuery = router.query;
-  const coinId: string | string[] | undefined = qurey.coinId;
+  const coinId = qurey.coinId as string;
 
-  const { data, error } = useCoinsData(
-    `${
-      coinId
-        ? `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${coinId}`
-        : ""
-    }`
-  );
+  const [coinData, setCoinData] = useState<CoinHistoryData>();
+  const [hasError, setHasError] = useState<boolean>(false);
+  const [timeFormat, setTimeFormat] = useState<string>("24h");
 
-  //   console.log(data);
+  const formatData = (data: any) => {
+    return data.map((el: any) => {
+      return {
+        x: el[0],
+        y: el[1],
+      };
+    });
+  };
 
-  if (error) {
+  useEffect(() => {
+    const fetchData = async () => {
+      await axios
+        .all([
+          axiosObj.get(`/coins/${coinId}/market_chart/`, {
+            params: {
+              vs_currency: "usd",
+              days: "1",
+            },
+          }),
+          axiosObj.get(`/coins/${coinId}/market_chart/`, {
+            params: {
+              vs_currency: "usd",
+              days: "7",
+            },
+          }),
+          axiosObj.get(`/coins/${coinId}/market_chart/`, {
+            params: {
+              vs_currency: "usd",
+              days: "30",
+            },
+          }),
+          axiosObj.get(`/coins/${coinId}/market_chart/`, {
+            params: {
+              vs_currency: "usd",
+              days: "365",
+            },
+          }),
+          axiosObj.get(`/coins/markets`, {
+            params: {
+              vs_currency: "usd",
+              ids: coinId,
+            },
+          }),
+        ])
+        .then(
+          axios.spread(
+            (resultsDay, resultsWeek, resultsMontn, resultsYear, details) => {
+              setCoinData({
+                day: formatData(resultsDay.data.prices),
+                week: formatData(resultsWeek.data.prices),
+                month: formatData(resultsMontn.data.prices),
+                year: formatData(resultsYear.data.prices),
+                details: details.data[0],
+              });
+            }
+          )
+        )
+        .catch(() => {
+          setHasError(true);
+        });
+    };
+
+    if (router.isReady) {
+      fetchData();
+    }
+  }, [coinId]);
+
+  if (hasError) {
     return (
       <p className='text-2xl text-center text-gray-200 font-bold mt-24 mx-auto'>
         Failed To Fetch Data - Please Try Again
@@ -33,9 +102,9 @@ const CoinHistoryPage: NextPage = () => {
     );
   }
 
-  if (!data) {
+  if (!coinData) {
     return (
-      <div className="mt-24">
+      <div className='mt-24'>
         <Loader />
       </div>
     );
@@ -44,10 +113,18 @@ const CoinHistoryPage: NextPage = () => {
   return (
     <>
       <Head>
-        <title>{data[0].name} Price History</title>
+        <title>Price History</title>
       </Head>
       <div className='container flex flex-col justify-end max-w-sm min-h-screen relative mx-auto'>
-        <CoinData data={data[0]} />
+        <div className="gradient-custom pb-6">
+          <CoinData data={coinData.details} />
+          <CoinHistoryChart coinData={coinData} timeFormat={timeFormat} />
+          <TimeFormatButtons
+            timeFormat={timeFormat}
+            setTimeFormat={setTimeFormat}
+          />
+        </div>
+        <CoinDataTable data={coinData.details} />
       </div>
     </>
   );
