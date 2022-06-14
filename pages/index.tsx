@@ -6,6 +6,7 @@ import { useState } from "react";
 import AppContextProvider from "../context/AppContextProvider";
 import Header from "../components/Header";
 import HeaderButton from "../components/UI/HeaderButton";
+import Loader from "../components/UI/Loader";
 import CoinsTable from "../components/CoinsTable";
 import CoinModal from "../components/CoinModal";
 import ScrollTopButton from "../components/UI/ScrollTopButton";
@@ -29,7 +30,9 @@ const SpotMarketsPage: NextPage = () => {
           <Header initialSlide={1}>
             <HeaderButton />
           </Header>
-          <CoinsTable coins={data} error={error} />
+          <CoinsTable coins={data} error={error}>
+            <Loader classes='h-screen -mt-40 pt-20' />
+          </CoinsTable>
           <CoinModal />
           <ScrollTopButton />
           <Footer apiPageNo={apiPageNo} setApiPageNo={setApiPageNo} />

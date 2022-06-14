@@ -6,13 +6,13 @@ import { CoinsTableProps } from "../interfaces/interfaces";
 
 // Importing Components
 import CoinCard from "./CoinCard";
-import Loader from "./UI/Loader";
 
 const CoinsTable: FC<CoinsTableProps> = ({
   coins,
   error,
   ids,
   forceUpdate,
+  children,
 }) => {
   if (error) {
     return (
@@ -38,7 +38,7 @@ const CoinsTable: FC<CoinsTableProps> = ({
   }
 
   if (!coins) {
-    return <Loader />;
+    return <>{children}</>;
   }
 
   return (

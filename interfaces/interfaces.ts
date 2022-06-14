@@ -73,6 +73,7 @@ export interface CoinsTableProps {
   error: object | undefined;
   ids?: string[] | undefined;
   forceUpdate?: Function;
+  children: ReactNode;
 }
 
 export interface CoinDataCellProps {

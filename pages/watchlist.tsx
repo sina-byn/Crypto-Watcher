@@ -11,6 +11,7 @@ import useForceUpdate from "../hooks/useForceUpdate";
 import AppContextProvider from "../context/AppContextProvider";
 import Header from "../components/Header";
 import CoinsTable from "../components/CoinsTable";
+import Loader from "../components/UI/Loader";
 import CoinModal from "../components/CoinModal";
 import ScrollTopButton from "../components/UI/ScrollTopButton";
 
@@ -47,7 +48,9 @@ const WatchlistPage: NextPage = () => {
             error={error}
             ids={ids}
             forceUpdate={forceUpdate}
-          />
+          >
+            <Loader classes="h-screen -mt-40 pt-32" />
+          </CoinsTable>
           <CoinModal />
           <ScrollTopButton />
         </AppContextProvider>

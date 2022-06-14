@@ -13,7 +13,7 @@ import { CoinHistoryData } from "../interfaces/interfaces";
 
 // Importing Components
 import Loader from "../components/UI/Loader";
-import CoinHistoryChart from "../components/UI/CoinHistoryChart";
+import CoinHistoryChart from "../components/CoinHistoryChart";
 import CoinDataTable from "../components/CoinDataTable";
 import TimeFormatButtons from "../components/TimeFormatButtons";
 import CoinData from "../components/CoinData";
@@ -105,7 +105,7 @@ const CoinHistoryPage: NextPage = () => {
   if (!coinData) {
     return (
       <div className='mt-24'>
-        <Loader />
+        <Loader classes="h-screen -mt-40 pt-32" />
       </div>
     );
   }

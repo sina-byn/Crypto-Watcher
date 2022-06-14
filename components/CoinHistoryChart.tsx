@@ -14,7 +14,7 @@ import { Line } from "react-chartjs-2";
 import "chartjs-adapter-moment";
 
 // Importing Interfaces
-import { CoinHistoryData, TableData } from "../../interfaces/interfaces";
+import { CoinHistoryData, TableData } from "../interfaces/interfaces";
 
 interface Props {
   coinData: CoinHistoryData;
