@@ -26,7 +26,7 @@ const Checkbox: FC<Props> = ({ id }) => {
         setIsSelected(true);
       }
     }
-  }, []);
+  }, [id]);
 
   const inputHandler = (): void => {
     setIsSelected(checkboxRef.current?.checked);

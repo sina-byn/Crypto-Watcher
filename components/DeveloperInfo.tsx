@@ -39,6 +39,7 @@ const DeveloperInfo: FC = () => {
             className='w-full text-xs text-center text-gray-200 border-2 border-gray-200 py-2 mx-auto hover:bg-gray-100 hover:bg-opacity-25'
             href='https://sina-byn.github.io/My-Portfolio/about-me.html'
             target='_blank'
+            rel="noreferrer"
           >
             Portfolio
           </a>

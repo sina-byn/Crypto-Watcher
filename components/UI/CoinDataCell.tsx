@@ -4,10 +4,8 @@ import { FC } from "react";
 import { CoinDataCellProps } from "../../interfaces/interfaces";
 
 // Importing Functions
-import { isPositive } from "../../helpers/functions";
+import { isPositive, formatDate } from "../../helpers/functions";
 
-// Importing hooks
-import useDate from "../../hooks/useDate";
 
 // Importing Components
 import ChevronTopIcon from "./ChevronTopIcon";
@@ -67,7 +65,7 @@ const CoinDataCell: FC<CoinDataCellProps> = (props) => {
       <div className='flex justify-between items-end text-sm text-gray-200 font-bold border-b-[1px] border-gray-700 border-opacity-[30%] pt-5 pb-2'>
         <div className='flex flex-col gap-y-1'>
           <h4 className='text-xs font-light'>
-            All Time High ({useDate(ath_date)})
+            All Time High ({formatDate(ath_date)})
           </h4>
           <p>${ath.toLocaleString()}</p>
         </div>
@@ -93,7 +91,7 @@ const CoinDataCell: FC<CoinDataCellProps> = (props) => {
       <div className='flex justify-between items-end text-sm text-gray-200 font-bold pt-5 pb-2'>
         <div className='flex flex-col gap-y-1'>
           <h4 className='text-xs font-light'>
-            All Time Low ({useDate(atl_date)})
+            All Time Low ({formatDate(atl_date)})
           </h4>
           <p>${atl.toLocaleString()}</p>
         </div>

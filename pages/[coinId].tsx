@@ -92,7 +92,7 @@ const CoinHistoryPage: NextPage = () => {
     if (router.isReady) {
       fetchData();
     }
-  }, [coinId]);
+  }, [coinId, router.isReady]);
 
   if (hasError) {
     return (

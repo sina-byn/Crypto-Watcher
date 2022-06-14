@@ -25,6 +25,7 @@ const ProjectInfro: FC = () => {
             className='hover:text-red-500'
             href='https://www.coingecko.com/'
             target='_blank'
+            rel="noreferrer"
           >
             Coingecko API - Click to Navigate
           </a>
@@ -38,6 +39,7 @@ const ProjectInfro: FC = () => {
           className='block border-b-[1px] border-gray-200 mt-3 ml-6 pb-2 hover:text-red-500 hover:border-red-500'
           href='https://dribbble.com/abimanyu17'
           target='_blank'
+          rel="noreferrer"
         >
           ={">"} Designer Profile
         </a>
@@ -45,6 +47,7 @@ const ProjectInfro: FC = () => {
           className='block border-b-[1px] border-gray-200 mt-3 ml-6 pb-2 hover:text-red-500 hover:border-red-500'
           href='https://dribbble.com/shots/17142286-CoinGyeek-Crypto-Coin-Price-Tracker/attachments/12239375?mode=media'
           target='_blank'
+          rel="noreferrer"
         >
           ={">"} Project Address
         </a>
