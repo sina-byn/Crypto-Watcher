@@ -4,8 +4,10 @@ import { useContext, useEffect, useState } from "react";
 
 // Importing hooks
 import useCoinsData from "../hooks/useCoinsData";
-import useLocalStorage from "../hooks/useLocalStorage";
 import useForceUpdate from "../hooks/useForceUpdate";
+
+// Importing Functions
+import { getLocalStorage } from "../helpers/functions";
 
 // Importing Components
 import AppContextProvider from "../context/AppContextProvider";
@@ -31,7 +33,7 @@ const WatchlistPage: NextPage = () => {
   const forceUpdate = useForceUpdate();
 
   useEffect(() => {
-    const watchlist = useLocalStorage("watchlist");
+    const watchlist = getLocalStorage("watchlist");
     setIds(watchlist);
   }, []);
 

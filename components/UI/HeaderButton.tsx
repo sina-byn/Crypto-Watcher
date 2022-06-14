@@ -5,8 +5,8 @@ import { NextRouter, useRouter } from "next/router";
 import { AppContext } from "../../context/AppContextProvider";
 import { AppCtx } from "../../interfaces/interfaces";
 
-// Importing hooks
-import useLocalStorage from "../../hooks/useLocalStorage";
+// Importing Functions
+import { getLocalStorage } from "../../helpers/functions";
 
 const HeaderButton: FC = () => {
   const router: NextRouter = useRouter();
@@ -17,7 +17,7 @@ const HeaderButton: FC = () => {
   const selectedCoins = ctx?.selectedCoins;
 
   const addHandler = (): void => {
-    const watchlist = useLocalStorage('watchlist');
+    const watchlist = getLocalStorage('watchlist');
     if (setSelectMode && selectedCoins) {
       const newWatchlist: string[] = Array.from(new Set([...watchlist, ...selectedCoins]));
       localStorage.setItem('watchlist', JSON.stringify(newWatchlist));

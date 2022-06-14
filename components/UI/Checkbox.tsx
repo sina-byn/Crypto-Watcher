@@ -4,8 +4,8 @@ import { FC, useContext, useEffect, useRef, useState } from "react";
 import { AppContext } from "../../context/AppContextProvider";
 import { AppCtx } from "../../interfaces/interfaces";
 
-// Importing hooks
-import useLocalStorage from "../../hooks/useLocalStorage";
+// Importing Functions
+import { getLocalStorage } from "../../helpers/functions";
 
 interface Props {
   id: string | null | undefined;
@@ -21,7 +21,7 @@ const Checkbox: FC<Props> = ({ id }) => {
 
   useEffect(() => {
     if (id) {
-      const watchlist = useLocalStorage("watchlist");
+      const watchlist = getLocalStorage("watchlist");
       if (watchlist.indexOf(id) > -1) {
         setIsSelected(true);
       }
