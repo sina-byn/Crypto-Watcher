@@ -61,7 +61,7 @@ const CoinHistoryChart: FC<Props> = ({ coinData, timeFormat }) => {
   return (
     <div className='chart container mx-auto'>
       <Line
-        className='w-full px-6 xs:px-0'
+        className='w-full px-6'
         data={{
           datasets: [
             {
