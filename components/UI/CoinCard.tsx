@@ -2,23 +2,24 @@ import { FC, useContext } from "react";
 import { NextRouter, useRouter } from "next/router";
 
 // Importing Context + Interfaces
-import { AppContext } from "../context/AppContextProvider";
-import { AppCtx } from "../interfaces/interfaces";
+import { AppContext } from "../../context/AppContextProvider";
+import { AppCtx } from "../../interfaces/interfaces";
 
 // Importing Interfaces
-import { CoinProps } from "../interfaces/interfaces";
+import { CoinProps } from "../../interfaces/interfaces";
 
 interface Props extends CoinProps {
   ids: string[] | undefined;
   forceUpdate: Function | undefined;
+  selectMode?: boolean;
 }
 
 // Importing Functions
-import { moveInOut } from "../helpers/animations";
+import { moveInOut } from "../../helpers/animations";
 
 // Importing Components
-import Checkbox from "./UI/Checkbox";
-import DeleteButton from "./UI/DeleteButton";
+import Checkbox from "./Checkbox";
+import DeleteButton from "./DeleteButton";
 
 const CoinCard: FC<Props> = (props) => {
   const {
@@ -32,14 +33,14 @@ const CoinCard: FC<Props> = (props) => {
     rank,
     img,
     ids,
-    forceUpdate
+    forceUpdate,
+    selectMode
   } = props;
 
   const router: NextRouter = useRouter();
   const pathname: string = router.pathname;
 
   const ctx: AppCtx | null = useContext<AppCtx | null>(AppContext);
-  const selectMode = ctx?.selectMode;
 
   const clickHandler = (): void => {
     if (ctx) {

@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import Head from "next/head";
-import { useContext, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
 // Importing hooks
 import useCoinsData from "../hooks/useCoinsData";
@@ -17,7 +17,12 @@ import Loader from "../components/UI/Loader";
 import CoinModal from "../components/CoinModal";
 import ScrollTopButton from "../components/UI/ScrollTopButton";
 
-const WatchlistPage: NextPage = () => {
+interface Props {
+  selectMode: boolean;
+  setSelectMode: Dispatch<SetStateAction<boolean>>;
+}
+
+const WatchlistPage: NextPage<Props> = ({ selectMode, setSelectMode }) => {
   const [ids, setIds] = useState<string[]>();
 
   const { data, error } = useCoinsData(
@@ -50,8 +55,10 @@ const WatchlistPage: NextPage = () => {
             error={error}
             ids={ids}
             forceUpdate={forceUpdate}
+            selectMode={selectMode}
+            setSelectMode={setSelectMode}
           >
-            <Loader classes="h-screen -mt-40 pt-32" />
+            <Loader classes='h-screen -mt-40 pt-32' />
           </CoinsTable>
           <CoinModal />
           <ScrollTopButton />

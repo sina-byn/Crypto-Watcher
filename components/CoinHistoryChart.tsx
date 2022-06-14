@@ -8,7 +8,6 @@ import {
   PointElement,
   LineElement,
   TimeScale,
-  Tooltip,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import "chartjs-adapter-moment";

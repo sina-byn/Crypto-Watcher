@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import Head from "next/head";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 
 // Importing Components
 import AppContextProvider from "../context/AppContextProvider";
@@ -13,7 +13,12 @@ import ScrollTopButton from "../components/UI/ScrollTopButton";
 import Footer from "../components/Footer";
 import useCoinsData from "../hooks/useCoinsData";
 
-const SpotMarketsPage: NextPage = () => {
+interface Props {
+  selectMode: boolean;
+  setSelectMode: Dispatch<SetStateAction<boolean>>;
+}
+
+const SpotMarketsPage: NextPage<Props> = ({ selectMode, setSelectMode }) => {
   const [apiPageNo, setApiPageNo] = useState<number>(1);
 
   const { data, error } = useCoinsData(
@@ -28,9 +33,17 @@ const SpotMarketsPage: NextPage = () => {
       <div className='container max-w-sm relative mx-auto'>
         <AppContextProvider>
           <Header initialSlide={1}>
-            <HeaderButton />
+            <HeaderButton
+              selectMode={selectMode}
+              setSelectMode={setSelectMode}
+            />
           </Header>
-          <CoinsTable coins={data} error={error}>
+          <CoinsTable
+            coins={data}
+            error={error}
+            selectMode={selectMode}
+            setSelectMode={setSelectMode}
+          >
             <Loader classes='h-screen -mt-40 pt-20' />
           </CoinsTable>
           <CoinModal />

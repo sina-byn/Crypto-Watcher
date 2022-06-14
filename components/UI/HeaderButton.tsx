@@ -1,28 +1,33 @@
-import { FC, useContext } from "react";
+import { Dispatch, FC, SetStateAction, useContext } from "react";
 import { NextRouter, useRouter } from "next/router";
+
+// Importing Functions
+import { getLocalStorage } from "../../helpers/functions";
 
 // Importing Context + Interfaces
 import { AppContext } from "../../context/AppContextProvider";
 import { AppCtx } from "../../interfaces/interfaces";
 
-// Importing Functions
-import { getLocalStorage } from "../../helpers/functions";
+interface Props {
+  selectMode: boolean;
+  setSelectMode: Dispatch<SetStateAction<boolean>>;
+}
 
-const HeaderButton: FC = () => {
+const HeaderButton: FC<Props> = ({ selectMode, setSelectMode }) => {
   const router: NextRouter = useRouter();
 
   const ctx = useContext<AppCtx | null>(AppContext);
-  const selectMode = ctx?.selectMode;
-  const setSelectMode = ctx?.setSelectMode;
   const selectedCoins = ctx?.selectedCoins;
 
   const addHandler = (): void => {
-    const watchlist = getLocalStorage('watchlist');
-    if (setSelectMode && selectedCoins) {
-      const newWatchlist: string[] = Array.from(new Set([...watchlist, ...selectedCoins]));
-      localStorage.setItem('watchlist', JSON.stringify(newWatchlist));
+    const watchlist = getLocalStorage("watchlist");
+    if (selectedCoins) {
+      const newWatchlist: string[] = Array.from(
+        new Set([...watchlist, ...selectedCoins])
+      );
+      localStorage.setItem("watchlist", JSON.stringify(newWatchlist));
       setSelectMode(false);
-      router.push('/watchlist');
+      router.push("/watchlist");
     }
   };
 

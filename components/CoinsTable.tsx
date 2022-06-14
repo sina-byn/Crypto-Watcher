@@ -5,7 +5,7 @@ import Link from "next/link";
 import { CoinsTableProps } from "../interfaces/interfaces";
 
 // Importing Components
-import CoinCard from "./CoinCard";
+import CoinCard from "./UI/CoinCard";
 
 const CoinsTable: FC<CoinsTableProps> = ({
   coins,
@@ -13,7 +13,15 @@ const CoinsTable: FC<CoinsTableProps> = ({
   ids,
   forceUpdate,
   children,
+  selectMode,
+  setSelectMode,
 }) => {
+  const clickHandler = (): void => {
+    if (setSelectMode) {
+      setSelectMode(true);
+    }
+  };
+
   if (error) {
     return (
       <p className='text-2xl text-center text-gray-200 font-bold mt-24 mx-auto'>
@@ -29,7 +37,7 @@ const CoinsTable: FC<CoinsTableProps> = ({
           Your Watchlist is Empty.
         </p>
         <Link href='/'>
-          <a className='text-gray-200 text-sm border-2 border-gray-200 py-2 px-3 hover:bg-gray-200 hover:bg-opacity-25'>
+          <a onClick={clickHandler} className='text-gray-200 text-sm border-2 border-gray-200 py-2 px-3 hover:bg-gray-200 hover:bg-opacity-25'>
             Add Coins
           </a>
         </Link>
@@ -58,6 +66,7 @@ const CoinsTable: FC<CoinsTableProps> = ({
             img={coin.image}
             ids={ids}
             forceUpdate={forceUpdate}
+            selectMode={selectMode}
           />
         );
       })}

@@ -1,4 +1,4 @@
-import { FC, createContext, ReactNode, useState, useEffect } from "react";
+import { FC, createContext, ReactNode, useState } from "react";
 
 // Importing Interfaces
 import { AppCtx, CoinProps } from "../interfaces/interfaces";
@@ -11,7 +11,6 @@ export const AppContext = createContext<AppCtx | null>(null);
 
 const AppContextProvider: FC<Props> = ({ children }) => {
   const [selectedCoins, setSelectedCoins] = useState<string[]>();
-  const [selectMode, setSelectMode] = useState<boolean>(false);
   const [isModalShown, setIsModalShown] = useState<boolean>(false);
   const [modalInfo, setModalInfo] = useState<CoinProps>({
     id: "",
@@ -26,8 +25,6 @@ const AppContextProvider: FC<Props> = ({ children }) => {
   const ctxData: AppCtx = {
     selectedCoins,
     setSelectedCoins,
-    selectMode,
-    setSelectMode,
     isModalShown,
     setIsModalShown,
     modalInfo,

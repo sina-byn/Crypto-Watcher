@@ -50,8 +50,6 @@ export interface ApiAddress {
 export interface AppCtx {
   selectedCoins: string[] | undefined;
   setSelectedCoins: Dispatch<SetStateAction<string[] | undefined>>;
-  selectMode: boolean;
-  setSelectMode: Dispatch<SetStateAction<boolean>>;
   isModalShown: boolean;
   setIsModalShown: Dispatch<SetStateAction<boolean>>;
   modalInfo: CoinProps | undefined;
@@ -63,7 +61,7 @@ export interface HeaderProps {
   children?: ReactNode;
 }
 
-export interface UseLocalStorage {
+export interface GetLocalStorage {
   list: string[];
   isFalsy: boolean;
 }
@@ -74,6 +72,8 @@ export interface CoinsTableProps {
   ids?: string[] | undefined;
   forceUpdate?: Function;
   children: ReactNode;
+  selectMode?:boolean;
+  setSelectMode?: Dispatch<SetStateAction<boolean>>;
 }
 
 export interface CoinDataCellProps {
