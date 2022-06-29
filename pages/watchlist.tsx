@@ -17,6 +17,9 @@ import Loader from "../components/UI/Loader";
 import CoinModal from "../components/CoinModal";
 import ScrollTopButton from "../components/UI/ScrollTopButton";
 
+// Importing Interfaces
+import { UseSWROptions } from "../interfaces/interfaces";
+
 interface Props {
   selectMode: boolean;
   setSelectMode: Dispatch<SetStateAction<boolean>>;
@@ -25,6 +28,13 @@ interface Props {
 const WatchlistPage: NextPage<Props> = ({ selectMode, setSelectMode }) => {
   const [ids, setIds] = useState<string[]>();
 
+  const hookOptions: UseSWROptions = {
+    revalidateOnFocus: true,
+    revalidateOnReconnect: true,
+    refreshInterval: 20000,
+    shoshouldRetryOnError: true,
+  };
+
   const { data, error } = useCoinsData(
     `${
       ids?.length
@@ -32,7 +42,8 @@ const WatchlistPage: NextPage<Props> = ({ selectMode, setSelectMode }) => {
             ","
           )}`
         : ""
-    }`
+    }`,
+    hookOptions
   );
 
   const forceUpdate = useForceUpdate();

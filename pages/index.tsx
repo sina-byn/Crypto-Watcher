@@ -57,7 +57,7 @@ const SpotMarketsPage: NextPage<Props> = ({ selectMode, setSelectMode }) => {
           >
             <Loader classes='h-screen -mt-40 pt-20' />
           </CoinsTable>
-          <CoinModal />
+          <CoinModal selectMode={selectMode} />
           <ScrollTopButton />
           <Footer apiPageNo={apiPageNo} setApiPageNo={setApiPageNo} />
         </AppContextProvider>
