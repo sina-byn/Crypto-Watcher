@@ -107,6 +107,13 @@ export interface CoinHistoryData {
   details: CoinDataProps;
 }
 
+export interface UseSWROptions {
+  revalidateOnFocus: boolean;
+  revalidateOnReconnect: boolean;
+  refreshInterval: number;
+  shoshouldRetryOnError: boolean;
+}
+
 // ath: 69045
 // ath_change_percentage: -55.7648
 // ath_date: "2021-11-10T14:24:11.849Z"

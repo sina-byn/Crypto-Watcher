@@ -13,6 +13,9 @@ import ScrollTopButton from "../components/UI/ScrollTopButton";
 import Footer from "../components/Footer";
 import useCoinsData from "../hooks/useCoinsData";
 
+// Importing Interfaces
+import { UseSWROptions } from "../interfaces/interfaces";
+
 interface Props {
   selectMode: boolean;
   setSelectMode: Dispatch<SetStateAction<boolean>>;
@@ -21,8 +24,16 @@ interface Props {
 const SpotMarketsPage: NextPage<Props> = ({ selectMode, setSelectMode }) => {
   const [apiPageNo, setApiPageNo] = useState<number>(1);
 
+  const hookOptions: UseSWROptions = {
+    revalidateOnFocus: true,
+    revalidateOnReconnect: true,
+    refreshInterval: 20000,
+    shoshouldRetryOnError: true,
+  };
+
   const { data, error } = useCoinsData(
-    `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=${apiPageNo}&sparkline=false`
+    `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=${apiPageNo}&sparkline=false`,
+    hookOptions
   );
 
   return (

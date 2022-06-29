@@ -89,8 +89,13 @@ const CoinHistoryPage: NextPage = () => {
         });
     };
 
+    const refetchOnInterval = () => {
+      setInterval(fetchData, 20000);
+    };
+
     if (router.isReady) {
       fetchData();
+      refetchOnInterval();
     }
   }, [coinId, router.isReady]);
 
@@ -105,7 +110,7 @@ const CoinHistoryPage: NextPage = () => {
   if (!coinData) {
     return (
       <div className='mt-24'>
-        <Loader classes="h-screen -mt-40 pt-32" />
+        <Loader classes='h-screen -mt-40 pt-32' />
       </div>
     );
   }
@@ -116,7 +121,7 @@ const CoinHistoryPage: NextPage = () => {
         <title>Price History</title>
       </Head>
       <div className='container flex flex-col justify-end max-w-sm min-h-screen relative mx-auto'>
-        <div className="gradient-custom pb-6">
+        <div className='gradient-custom pb-6'>
           <CoinData data={coinData.details} />
           <CoinHistoryChart coinData={coinData} timeFormat={timeFormat} />
           <TimeFormatButtons
