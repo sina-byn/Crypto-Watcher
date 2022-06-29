@@ -59,6 +59,7 @@ export interface AppCtx {
 export interface HeaderProps {
   initialSlide: number;
   children?: ReactNode;
+  selectMode?: boolean;
 }
 
 export interface GetLocalStorage {

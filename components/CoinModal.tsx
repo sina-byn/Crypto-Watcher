@@ -9,7 +9,7 @@ import { AppCtx } from "../interfaces/interfaces";
 import { moveInOut } from "../helpers/animations";
 
 interface Props {
-  selectMode: boolean;
+  selectMode?: boolean;
 }
 
 const CoinModal: FC<Props> = ({ selectMode }) => {
@@ -18,6 +18,7 @@ const CoinModal: FC<Props> = ({ selectMode }) => {
   const isModalShown = ctx?.isModalShown;
   const setIsModalShown = ctx?.setIsModalShown;
   const modalInfo = ctx?.modalInfo;
+  const coverRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (coverRef.current) {
@@ -25,7 +26,6 @@ const CoinModal: FC<Props> = ({ selectMode }) => {
       cover.style.opacity = "15%";
     }
   }, [isModalShown]);
-  const coverRef = useRef<HTMLDivElement>(null);
 
   const closeHandler = (): void => {
     if (coverRef.current) {

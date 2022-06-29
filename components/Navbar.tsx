@@ -10,9 +10,10 @@ import NavLink from "./UI/NavLink";
 
 interface Props {
   initialSlide: number;
+  selectMode: boolean | undefined;
 }
 
-const Navbar: FC<Props> = ({ initialSlide }) => {
+const Navbar: FC<Props> = ({ initialSlide ,selectMode }) => {
   const [isCoverShown, setIsCoverShown] = useState<boolean>(false);
 
   const router: NextRouter = useRouter();
@@ -23,7 +24,7 @@ const Navbar: FC<Props> = ({ initialSlide }) => {
       <div className='slider-design w-36 absolute left-0 h-full z-10 bg-gradient-to-r from-black to-transparent'></div>
       <div
         className={`${
-          isCoverShown ? "initial" : "hidden"
+          isCoverShown || selectMode ? "initial" : "hidden"
         } cover absolute w-full h-10 z-10 cursor-grab`}
       ></div>
       <Swiper

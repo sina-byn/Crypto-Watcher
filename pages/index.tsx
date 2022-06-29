@@ -43,7 +43,7 @@ const SpotMarketsPage: NextPage<Props> = ({ selectMode, setSelectMode }) => {
       </Head>
       <div className='container max-w-sm relative mx-auto'>
         <AppContextProvider>
-          <Header initialSlide={1}>
+          <Header initialSlide={1} selectMode={selectMode}>
             <HeaderButton
               selectMode={selectMode}
               setSelectMode={setSelectMode}
