@@ -37,7 +37,7 @@ const DeveloperInfo: FC = () => {
         <div className='flex w-full gap-x-4 mt-6 mb-10'>
           <a
             className='w-full text-xs text-center text-gray-200 border-2 border-gray-200 pt-2 pb-[0.7rem] mx-auto hover:bg-gray-100 hover:bg-opacity-25'
-            href='https://sina-bayan.netlify.app/'
+            href='https://my-portfolio-sina-byn.vercel.app/'
             target='_blank'
             rel="noreferrer"
           >
@@ -45,7 +45,7 @@ const DeveloperInfo: FC = () => {
           </a>
           <a
             className='w-full text-xs text-center text-gray-200 border-2 border-gray-200 pt-2 pb-[0.7rem] mx-auto hover:bg-gray-100 hover:bg-opacity-25'
-            href='https://sina-bayan.netlify.app/uploads/sina-bayandorian.pdf'
+            href='https://my-portfolio-sina-byn.vercel.app/uploads/sina-bayandorian.pdf'
             download
           >
             Resume
